@@ -13,9 +13,9 @@
       --border-color: #282828;
       --btn-bg: #ff6600;
       --btn-text: #ffffff;
-      --sidebar-bg: #ffffff;
-      --sidebar-text: #000000;
-      --sidebar-hover: #eeeeee;
+      --sidebar-bg: #1f1f1f;
+      --sidebar-text: #ffffff;
+      --sidebar-hover: #333333;
     }
 
     * {
@@ -23,7 +23,6 @@
       padding: 0;
       box-sizing: border-box;
       font-family: Arial, Helvetica, sans-serif;
-      transition: background-color 0.3s, color 0.3s;
     }
 
     body {
@@ -43,17 +42,17 @@
       border-bottom: 1px solid var(--border-color);
     }
 
-    .header-left, .header-right {
+    .header-left {
       display: flex;
       align-items: center;
       gap: 12px;
     }
 
-    .menu-btn, .icon-btn {
+    .menu-btn {
       background: none;
       border: none;
       color: var(--text-color);
-      font-size: 20px;
+      font-size: 24px;
       cursor: pointer;
     }
 
@@ -64,6 +63,7 @@
       cursor: pointer;
     }
 
+    /* Sol Menü (Kategoriler) Düzenlemesi */
     .dropdown-menu {
       position: fixed;
       top: 0;
@@ -75,6 +75,7 @@
       z-index: 200;
       transition: left 0.3s ease;
       overflow-y: auto;
+      border-right: 1px solid var(--border-color);
     }
 
     .dropdown-menu.active {
@@ -86,11 +87,13 @@
       color: #fff;
       padding: 20px 16px;
       text-align: center;
+      border-bottom: 1px solid var(--border-color);
     }
 
     .menu-header h2 {
       font-size: 18px;
       margin-bottom: 5px;
+      color: var(--btn-bg);
     }
 
     .menu-header p {
@@ -106,13 +109,18 @@
     .menu-list li a {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 12px 20px;
+      padding: 14px 20px;
       color: var(--sidebar-text);
       text-decoration: none;
       font-size: 15px;
       border-bottom: 1px solid var(--border-color);
       cursor: pointer;
+      font-weight: bold;
+    }
+
+    .menu-list li a:hover {
+      background-color: var(--sidebar-hover);
+      color: var(--btn-bg);
     }
 
     .overlay {
@@ -274,7 +282,6 @@
       font-weight: bold;
     }
 
-    /* Oynatıcı ve Reklam Katmanı Stilleri */
     .player-wrapper {
       position: relative;
       padding-bottom: 56.25%;
@@ -312,19 +319,21 @@
       position: absolute;
       bottom: 20px;
       right: 20px;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.85);
       color: #fff;
-      border: 1px solid #fff;
-      padding: 8px 16px;
-      font-size: 13px;
+      border: 1px solid var(--btn-bg);
+      padding: 10px 18px;
+      font-size: 14px;
       border-radius: 4px;
       cursor: pointer;
       z-index: 15;
+      font-weight: bold;
     }
 
     .skip-ad-btn.disabled {
       cursor: not-allowed;
       opacity: 0.7;
+      border-color: #555;
     }
 
     .hidden {
@@ -341,14 +350,17 @@
     </div>
   </header>
 
+  <!-- Sol Kategoriler Menüsü -->
   <div class="dropdown-menu" id="sidebar">
     <div class="menu-header">
       <h2>Kategoriler</h2>
       <p>WQEMAN.com</p>
     </div>
     <ul class="menu-list">
-      <li><a onclick="showHome()">Baslangic</a></li>
+      <li><a onclick="showHome()">Baslangic Sayfasi</a></li>
       <li><a onclick="showChannelSophie()">Sophieraiin Kanali</a></li>
+      <li><a onclick="showHome()">Full HD Videolar</a></li>
+      <li><a onclick="showHome()">Populer Icerikler</a></li>
     </ul>
   </div>
 
@@ -407,8 +419,8 @@
     <div class="player-wrapper">
       <!-- Reklam Katmanı -->
       <div class="ad-overlay" id="adOverlay">
-        <video id="adVideo" src="reklam.mp4" autoplay muted playsinline></video>
-        <button class="skip-ad-btn disabled" id="skipAdBtn">Reklamı Geç (5)</button>
+        <video id="adVideo" src="reklam.mp4" playsinline></video>
+        <button class="skip-ad-btn disabled" id="skipAdBtn">Reklami Gec (9)</button>
       </div>
 
       <!-- Asıl Video -->
@@ -467,31 +479,47 @@
       document.getElementById('videoIframe').src = embedUrl;
       window.scrollTo(0, 0);
 
-      // Reklam Sayacı İşlemleri
+      // Reklam Kontrolleri
       const adOverlay = document.getElementById('adOverlay');
       const adVideo = document.getElementById('adVideo');
       const skipAdBtn = document.getElementById('skipAdBtn');
       
       adOverlay.classList.remove('hidden');
       adVideo.currentTime = 0;
-      adVideo.play();
+      adVideo.muted = false; // Sesi aktif et
 
-      let timeLeft = 5;
+      // Kullanıcı tıklaması üzerinden sesi garantili oynat
+      const playPromise = adVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Eğer sesli oynatma engellenirse sessiz başlatıp devam ettir
+          adVideo.muted = true;
+          adVideo.play();
+        });
+      }
+
+      let timeLeft = 9;
       skipAdBtn.innerText = `Reklami Gec (${timeLeft})`;
       skipAdBtn.classList.add('disabled');
 
       const countdown = setInterval(() => {
         timeLeft--;
-        if (timeLeft > 0) {
+        
+        if (timeLeft <= 4 && timeLeft > 0) {
           skipAdBtn.innerText = `Reklami Gec (${timeLeft})`;
-        } else {
-          clearInterval(countdown);
-          skipAdBtn.innerText = 'Reklami Gec';
           skipAdBtn.classList.remove('disabled');
           skipAdBtn.onclick = () => {
+            clearInterval(countdown);
             adVideo.pause();
             adOverlay.classList.add('hidden');
           };
+        } 
+        else if (timeLeft <= 0) {
+          clearInterval(countdown);
+          adVideo.pause();
+          adOverlay.classList.add('hidden');
+        } else {
+          skipAdBtn.innerText = `Reklami Gec (${timeLeft})`;
         }
       }, 1000);
     }
