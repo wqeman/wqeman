@@ -134,50 +134,6 @@
       padding: 12px;
     }
 
-    /* Kanal Alanı */
-    .channel-box {
-      background-color: #1e1e1e;
-      padding: 14px;
-      border-radius: 6px;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .channel-avatar {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background-color: #333;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 18px;
-      color: #fff;
-    }
-
-    .channel-title {
-      font-size: 16px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .blue-tick {
-      background-color: #1da1f2;
-      color: #fff;
-      border-radius: 50%;
-      width: 16px;
-      height: 16px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-    }
-
     /* Video Kartı */
     .video-card {
       background-color: #1a1a1a;
@@ -189,43 +145,73 @@
 
     .thumbnail-box {
       width: 100%;
-      position: relative;
+      background-color: #000;
     }
 
     .thumbnail-box img {
       width: 100%;
+      height: auto;
       display: block;
+      object-fit: cover;
     }
 
     .video-details {
-      padding: 12px;
+      padding: 14px;
     }
 
     .video-title {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: bold;
       color: #ffffff;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
       line-height: 1.4;
     }
 
-    .video-desc {
-      font-size: 13px;
-      color: #bbb;
-      margin-bottom: 10px;
+    /* Kanal Bilgisi (Video Altında) */
+    .channel-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      margin-bottom: 14px;
     }
 
-    .channel-link {
-      color: #1da1f2;
-      text-decoration: none;
+    .channel-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: #ff0055;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-weight: bold;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .channel-name-area {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .channel-name-area:hover {
+      color: #1da1f2;
+    }
+
+    .blue-tick {
+      background-color: #1da1f2;
+      color: #fff;
+      border-radius: 50%;
+      width: 14px;
+      height: 14px;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-    }
-
-    .channel-link:hover {
-      text-decoration: underline;
+      justify-content: center;
+      font-size: 9px;
     }
 
     .action-btn {
@@ -238,7 +224,6 @@
       text-decoration: none;
       border-radius: 4px;
       font-weight: bold;
-      margin-top: 8px;
     }
   </style>
 </head>
@@ -247,15 +232,15 @@
   <!-- Header -->
   <header>
     <button class="menu-btn" id="menuToggle">☰</button>
-    <a href="#" class="logo">😎 WQEMAN.com</a>
+    <a href="#" class="logo">WQEMAN🙈</a>
     <button class="search-btn">🔍</button>
   </header>
 
   <!-- Doeda Tarzı Açılır Menü -->
   <div class="sidebar" id="sidebar">
     <div class="sidebar-top">
-      <h2>KANALLAR +++ 😎</h2>
-      <p>WQEMAN özel içerik platformu. En hızlı ve kesintisiz video deneyimi.</p>
+      <h2>WQEMAN.com 😎</h2>
+      <p>Özel içerik platformu. En hızlı ve kesintisiz video deneyimi.</p>
     </div>
     <ul class="sidebar-menu">
       <li><a href="#">Başlangıç</a></li>
@@ -270,28 +255,23 @@
   <!-- İçerik Alanı -->
   <div class="container">
 
-    <!-- Sophieraiin Kanalı -->
-    <div class="channel-box">
-      <div class="channel-avatar">SR</div>
-      <div>
-        <div class="channel-title">
-          Sophieraiin 
-          <span class="blue-tick" title="Mavi Tikli Kanal">✓</span>
-        </div>
-        <div style="font-size: 12px; color: #888; margin-top: 2px;">Resmi İçerik Kanalı</div>
-      </div>
-    </div>
-
-    <!-- Tek Video -->
+    <!-- Tek Video Kartı -->
     <div class="video-card">
       <div class="thumbnail-box">
-        <img src="https://i.postimg.cc/MvPphmvC/2.jpg" alt="Video Kapak">
+        <img src="https://i.postimg.cc/MvPphmvC/2.jpg" alt="Sophie Rain Kapak">
       </div>
       <div class="video-details">
-        <div class="video-title">Sophie Rain Özel Gösteri Videosu</div>
-        <div class="video-desc">
-          Bu video <a href="#" class="channel-link">Sophieraiin <span class="blue-tick">✓</span></a> kanalına aittir.
-        </div>
+        <div class="video-title">Sophie Rain Krem Şanti İle Şov Yapıyor</div>
+        
+        <!-- Kanal Profili (Tıklanınca kanala gider) -->
+        <a href="#" class="channel-row">
+          <div class="channel-avatar">SR</div>
+          <div class="channel-name-area">
+            Sophieraiin 
+            <span class="blue-tick" title="Mavi Tik">✓</span>
+          </div>
+        </a>
+
         <a href="https://voe.sx/e/vdkex5vzitjh" target="_blank" class="action-btn">Hemen İzle 🚀</a>
       </div>
     </div>
