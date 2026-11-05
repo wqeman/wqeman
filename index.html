@@ -1,25 +1,53 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="tr" id="htmlRoot">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WQEMAN🙈</title>
   <style>
+    /* Tema Değişkenleri */
+    :root {
+      --bg-color: #121212;
+      --text-color: #ffffff;
+      --header-bg: #000000;
+      --card-bg: #1a1a1a;
+      --border-color: #282828;
+      --btn-bg: #ff6600; /* Siyah tema için Turuncu */
+      --btn-text: #ffffff;
+      --sidebar-bg: #ffffff;
+      --sidebar-text: #000000;
+      --sidebar-hover: #f5f5f5;
+    }
+
+    [data-theme="light"] {
+      --bg-color: #f4f4f4;
+      --text-color: #111111;
+      --header-bg: #ffffff;
+      --card-bg: #ffffff;
+      --border-color: #dddddd;
+      --btn-bg: #ff3399; /* Beyaz tema için Pembe */
+      --btn-text: #ffffff;
+      --sidebar-bg: #ffffff;
+      --sidebar-text: #000000;
+      --sidebar-hover: #eeeeee;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: Arial, Helvetica, sans-serif;
+      transition: background-color 0.3s, color 0.3s;
     }
 
     body {
-      background-color: #121212;
-      color: #ffffff;
+      background-color: var(--bg-color);
+      color: var(--text-color);
     }
 
     /* Header / Üst Alan */
     header {
-      background-color: #000000;
+      background-color: var(--header-bg);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -27,89 +55,83 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      border-bottom: 1px solid #222;
+      border-bottom: 1px solid var(--border-color);
     }
 
-    .menu-btn {
+    .header-left, .header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .menu-btn, .icon-btn {
       background: none;
       border: none;
-      color: #fff;
-      font-size: 24px;
+      color: var(--text-color);
+      font-size: 20px;
       cursor: pointer;
     }
 
     .logo {
       font-size: 20px;
       font-weight: bold;
-      color: #ffffff;
+      color: var(--text-color);
       text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 5px;
     }
 
-    .search-btn {
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 20px;
-      cursor: pointer;
-    }
-
-    /* Sol Menü (Sidebar) */
-    .sidebar {
+    /* Açılır Menüler (Sidebar & Dil Menüsü) */
+    .dropdown-menu {
       position: fixed;
       top: 0;
       left: -100%;
       width: 280px;
       height: 100%;
-      background-color: #ffffff;
-      color: #000000;
+      background-color: var(--sidebar-bg);
+      color: var(--sidebar-text);
       z-index: 200;
       transition: left 0.3s ease;
       overflow-y: auto;
     }
 
-    .sidebar.active {
+    .dropdown-menu.active {
       left: 0;
     }
 
-    .sidebar-top {
-      background-color: #000000;
-      color: #ffffff;
+    .menu-header {
+      background-color: #000;
+      color: #fff;
       padding: 20px 16px;
       text-align: center;
     }
 
-    .sidebar-top h2 {
+    .menu-header h2 {
       font-size: 18px;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
+      margin-bottom: 5px;
     }
 
-    .sidebar-top p {
+    .menu-header p {
       font-size: 12px;
-      color: #ccc;
-      line-height: 1.4;
+      color: #aaa;
     }
 
-    .sidebar-menu {
+    .menu-list {
       list-style: none;
       padding: 10px 0;
     }
 
-    .sidebar-menu li a {
-      display: block;
+    .menu-list li a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       padding: 12px 20px;
-      color: #333;
+      color: var(--sidebar-text);
       text-decoration: none;
       font-size: 15px;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid var(--border-color);
     }
 
-    .sidebar-menu li a:hover {
-      background-color: #f5f5f5;
-      color: #000;
+    .menu-list li a:hover {
+      background-color: var(--sidebar-hover);
     }
 
     .overlay {
@@ -136,11 +158,11 @@
 
     /* Video Kartı */
     .video-card {
-      background-color: #1a1a1a;
+      background-color: var(--card-bg);
       border-radius: 6px;
       overflow: hidden;
       margin-bottom: 20px;
-      border: 1px solid #282828;
+      border: 1px solid var(--border-color);
     }
 
     .thumbnail-box {
@@ -162,12 +184,12 @@
     .video-title {
       font-size: 16px;
       font-weight: bold;
-      color: #ffffff;
+      color: var(--text-color);
       margin-bottom: 12px;
       line-height: 1.4;
     }
 
-    /* Kanal Bilgisi (Video Altında) */
+    /* Kanal Bilgisi */
     .channel-row {
       display: flex;
       align-items: center;
@@ -180,7 +202,7 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background-color: #ff0055;
+      background-color: var(--btn-bg);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -193,13 +215,9 @@
       display: flex;
       align-items: center;
       gap: 5px;
-      color: #fff;
+      color: var(--text-color);
       font-size: 14px;
       font-weight: bold;
-    }
-
-    .channel-name-area:hover {
-      color: #1da1f2;
     }
 
     .blue-tick {
@@ -218,8 +236,8 @@
       display: inline-block;
       width: 100%;
       padding: 10px;
-      background-color: #e50914;
-      color: #fff;
+      background-color: var(--btn-bg);
+      color: var(--btn-text);
       text-align: center;
       text-decoration: none;
       border-radius: 4px;
@@ -227,60 +245,79 @@
     }
   </style>
 </head>
-<body>
+<body data-theme="dark">
 
   <!-- Header -->
   <header>
-    <button class="menu-btn" id="menuToggle">☰</button>
-    <a href="#" class="logo">WQEMAN🙈</a>
-    <button class="search-btn">🔍</button>
+    <div class="header-left">
+      <button class="menu-btn" id="menuToggle">☰</button>
+      <a href="#" class="logo">WQEMAN🙈</a>
+    </div>
+    <div class="header-right">
+      <!-- Dil Seçim Butonu -->
+      <button class="icon-btn" id="langToggle" title="Dil Seç / Language">🌍</button>
+      <!-- Tema Değiştirme Butonu -->
+      <button class="icon-btn" id="themeToggle" title="Tema Değiştir">🌓</button>
+    </div>
   </header>
 
-  <!-- Doeda Tarzı Açılır Menü -->
-  <div class="sidebar" id="sidebar">
-    <div class="sidebar-top">
-      <h2>WQEMAN.com 😎</h2>
-      <p>Özel içerik platformu. En hızlı ve kesintisiz video deneyimi.</p>
+  <!-- Sol Kategori Menüsü -->
+  <div class="dropdown-menu" id="sidebar">
+    <div class="menu-header">
+      <h2 id="txtMenuTitle">Kategoriler</h2>
+      <p>WQEMAN.com</p>
     </div>
-    <ul class="sidebar-menu">
-      <li><a href="#">Başlangıç</a></li>
-      <li><a href="#">Sophieraiin Özel</a></li>
-      <li><a href="#">Full HD</a></li>
-      <li><a href="#">Popüler</a></li>
-      <li><a href="#">Trendler</a></li>
+    <ul class="menu-list">
+      <li><a href="#" id="catStart">🏠 Başlangıç / Home</a></li>
+      <li><a href="#" id="catSophie">✨ Sophieraiin Özel</a></li>
+      <li><a href="#" id="catHd">🎬 Full HD</a></li>
+      <li><a href="#" id="catPop">🔥 Popüler / Popular</a></li>
     </ul>
   </div>
+
+  <!-- Sağ Dil Seçim Menüsü -->
+  <div class="dropdown-menu" id="langMenu" style="left: auto; right: -100%;">
+    <div class="menu-header">
+      <h2>Dil Seçin / Select Language</h2>
+    </div>
+    <ul class="menu-list">
+      <li><a href="#" onclick="changeLang('tr')">🇹🇷 Türkçe</a></li>
+      <li><a href="#" onclick="changeLang('en')">🇬🇧 English</a></li>
+      <li><a href="#" onclick="changeLang('fr')">🇫🇷 Français</a></li>
+      <li><a href="#" onclick="changeLang('de')">🇩🇪 Deutsch</a></li>
+    </ul>
+  </div>
+
   <div class="overlay" id="overlay"></div>
 
   <!-- İçerik Alanı -->
   <div class="container">
-
-    <!-- Tek Video Kartı -->
     <div class="video-card">
       <div class="thumbnail-box">
         <img src="https://i.postimg.cc/MvPphmvC/2.jpg" alt="Sophie Rain Kapak">
       </div>
       <div class="video-details">
-        <div class="video-title">Sophie Rain Krem Şanti İle Şov Yapıyor</div>
+        <div class="video-title" id="videoTitleText">Sophie Rain Krem Şanti İle Şov Yapıyor</div>
         
-        <!-- Kanal Profili (Tıklanınca kanala gider) -->
         <a href="#" class="channel-row">
           <div class="channel-avatar">SR</div>
           <div class="channel-name-area">
             Sophieraiin 
-            <span class="blue-tick" title="Mavi Tik">✓</span>
+            <span class="blue-tick">✓</span>
           </div>
         </a>
 
-        <a href="https://voe.sx/e/vdkex5vzitjh" target="_blank" class="action-btn">Hemen İzle 🚀</a>
+        <a href="https://voe.sx/e/vdkex5vzitjh" target="_blank" class="action-btn" id="watchBtnText">Hemen İzle 🚀</a>
       </div>
     </div>
-
   </div>
 
   <script>
+    // Menü ve Dil Paneli Kontrolleri
     const menuToggle = document.getElementById('menuToggle');
+    const langToggle = document.getElementById('langToggle');
     const sidebar = document.getElementById('sidebar');
+    const langMenu = document.getElementById('langMenu');
     const overlay = document.getElementById('overlay');
 
     menuToggle.addEventListener('click', () => {
@@ -288,10 +325,83 @@
       overlay.classList.add('active');
     });
 
+    langToggle.addEventListener('click', () => {
+      langMenu.style.right = '0';
+      overlay.classList.add('active');
+    });
+
     overlay.addEventListener('click', () => {
       sidebar.classList.remove('active');
+      langMenu.style.right = '-100%';
       overlay.classList.remove('active');
     });
+
+    // Tema Değiştirici (Siyah-Turuncu / Beyaz-Pembe)
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+
+    themeToggle.addEventListener('click', () => {
+      if (body.getAttribute('data-theme') === 'dark') {
+        body.setAttribute('data-theme', 'light');
+      } else {
+        body.setAttribute('data-theme', 'dark');
+      }
+    });
+
+    // Çoklu Dil Sözlüğü
+    const translations = {
+      tr: {
+        title: "Sophie Rain Krem Şanti İle Şov Yapıyor",
+        watch: "Hemen İzle 🚀",
+        menuTitle: "Kategoriler",
+        cat1: "🏠 Başlangıç",
+        cat2: "✨ Sophieraiin Özel",
+        cat3: "🎬 Full HD",
+        cat4: "🔥 Popüler"
+      },
+      en: {
+        title: "Sophie Rain Show With Whipped Cream",
+        watch: "Watch Now 🚀",
+        menuTitle: "Categories",
+        cat1: "🏠 Home",
+        cat2: "✨ Sophieraiin Exclusive",
+        cat3: "🎬 Full HD",
+        cat4: "🔥 Popular"
+      },
+      fr: {
+        title: "Sophie Rain Show Avec De La Crème Chantilly",
+        watch: "Regarder 🚀",
+        menuTitle: "Catégories",
+        cat1: "🏠 Accueil",
+        cat2: "✨ Sophieraiin Exclusif",
+        cat3: "🎬 Full HD",
+        cat4: "🔥 Populaire"
+      },
+      de: {
+        title: "Sophie Rain Show Mit Schlagsahne",
+        watch: "Jetzt Ansehen 🚀",
+        menuTitle: "Kategorien",
+        cat1: "🏠 Startseite",
+        cat2: "✨ Sophieraiin Exklusiv",
+        cat3: "🎬 Full HD",
+        cat4: "🔥 Beliebt"
+      }
+    };
+
+    function changeLang(lang) {
+      document.getElementById('videoTitleText').innerText = translations[lang].title;
+      document.getElementById('watchBtnText').innerText = translations[lang].watch;
+      document.getElementById('txtMenuTitle').innerText = translations[lang].menuTitle;
+      document.getElementById('catStart').innerText = translations[lang].cat1;
+      document.getElementById('catSophie').innerText = translations[lang].cat2;
+      document.getElementById('catHd').innerText = translations[lang].cat3;
+      document.getElementById('catPop').innerText = translations[lang].cat4;
+
+      // Menüyü kapat
+      sidebar.classList.remove('active');
+      langMenu.style.right = '-100%';
+      overlay.classList.remove('active');
+    }
   </script>
 
 </body>
