@@ -155,13 +155,61 @@
     }
 
     .section-title {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: bold;
       margin-bottom: 14px;
       text-transform: uppercase;
+      color: #aaa;
     }
 
-    /* Video Listesi & Kart Yapısı */
+    /* Kanal Profil Banner Düzeni */
+    .channel-profile-header {
+      background: linear-gradient(135deg, #222, #111);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      border: 1px solid var(--border-color);
+    }
+
+    .channel-banner-img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      background-color: #333;
+    }
+
+    .channel-profile-info {
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .channel-profile-avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: 3px solid var(--bg-color);
+      margin-top: -45px;
+      background-color: #ff6600;
+      object-fit: cover;
+    }
+
+    .channel-meta h1 {
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-color);
+    }
+
+    .channel-meta p {
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 4px;
+    }
+
+    /* Video Kartı */
     .video-card {
       background-color: var(--card-bg);
       border-radius: 6px;
@@ -216,6 +264,7 @@
       font-weight: bold;
       font-size: 14px;
       color: #fff;
+      object-fit: cover;
     }
 
     .channel-name-area {
@@ -254,7 +303,7 @@
     /* Video İzleme Ekranı Stilleri */
     .player-container {
       position: relative;
-      padding-bottom: 56.25%; /* 16:9 ratio */
+      padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
       background: #000;
@@ -296,10 +345,10 @@
       <p>WQEMAN.com</p>
     </div>
     <ul class="menu-list">
-      <li><a onclick="filterCategory('all')">🏠 Başlangıç</a></li>
-      <li><a onclick="filterCategory('sophie')">✨ Sophieraiin Özel</a></li>
-      <li><a onclick="filterCategory('hd')">🎬 Full HD</a></li>
-      <li><a onclick="filterCategory('pop')">🔥 Popüler</a></li>
+      <li><a onclick="showHome()">🏠 Başlangıç</a></li>
+      <li><a onclick="showChannelSophie()">✨ Sophieraiin Kanalı</a></li>
+      <li><a onclick="showHome()">🎬 Full HD</a></li>
+      <li><a onclick="showHome()">🔥 Popüler</a></li>
     </ul>
   </div>
 
@@ -318,8 +367,8 @@
         <div class="video-details">
           <div class="video-title">Sophie Rain Krem Şanti İle Şov Yapıyor</div>
           
-          <div class="channel-row" onclick="event.stopPropagation(); filterCategory('sophie');">
-            <div class="channel-avatar">SR</div>
+          <div class="channel-row" onclick="event.stopPropagation(); showChannelSophie();">
+            <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Sophie" class="channel-avatar">
             <div class="channel-name-area">
               Sophieraiin 
               <span class="blue-tick">✓</span>
@@ -332,26 +381,53 @@
     </div>
   </div>
 
-  <!-- Video İzleme Sayfası (Detay & YouTube Düzeni) -->
+  <!-- Sophieraiin Kanal Sayfası -->
+  <div class="container hidden" id="channelView">
+    <div class="channel-profile-header">
+      <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Banner" class="channel-banner-img">
+      <div class="channel-profile-info">
+        <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Avatar" class="channel-profile-avatar">
+        <div class="channel-meta">
+          <h1>Sophieraiin <span class="blue-tick">✓</span></h1>
+          <p>Resmi içerik kanalı. Özel performanslar ve gösteriler.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">Kanalın Videoları</div>
+    <div class="video-card" onclick="openVideo('Sophie Rain Krem Şanti İle Şov Yapıyor', 'https://voe.sx/e/vdkex5vzitjh')">
+      <div class="thumbnail-box">
+        <img src="https://i.postimg.cc/pTMp10rZ/2-(1).jpg" alt="Sophie Rain Kapak">
+      </div>
+      <div class="video-details">
+        <div class="video-title">Sophie Rain Krem Şanti İle Şov Yapıyor</div>
+        <div class="channel-row">
+          <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Avatar" class="channel-avatar">
+          <div class="channel-name-area">
+            Sophieraiin <span class="blue-tick">✓</span>
+          </div>
+        </div>
+        <span class="action-btn">Hemen İzle 🚀</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video İzleme Sayfası (Detay & Alt Alta Benzer Videolar) -->
   <div class="container hidden" id="videoView">
-    <!-- Video Oynatıcı -->
     <div class="player-container">
       <iframe id="videoIframe" src="" allowfullscreen></iframe>
     </div>
 
-    <!-- Video Başlığı -->
     <div class="video-title" id="playingVideoTitle" style="font-size: 18px;"></div>
 
-    <!-- Kanal Profili -->
-    <div class="channel-row" onclick="filterCategory('sophie');" style="border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-bottom: 20px;">
-      <div class="channel-avatar">SR</div>
+    <div class="channel-row" onclick="showChannelSophie();" style="border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-bottom: 20px;">
+      <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Avatar" class="channel-avatar">
       <div class="channel-name-area">
         Sophieraiin 
         <span class="blue-tick">✓</span>
       </div>
     </div>
 
-    <!-- Alt Alt Benzer Videolar (Ekran Görüntüsündeki Düzen) -->
     <div class="section-title">BENZER VİDEOLAR</div>
     <div id="relatedVideos">
       <div class="video-card" onclick="openVideo('Sophie Rain Krem Şanti İle Şov Yapıyor', 'https://voe.sx/e/vdkex5vzitjh')">
@@ -361,7 +437,7 @@
         <div class="video-details">
           <div class="video-title">Sophie Rain Krem Şanti İle Şov Yapıyor</div>
           <div class="channel-row">
-            <div class="channel-avatar">SR</div>
+            <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Avatar" class="channel-avatar">
             <div class="channel-name-area">
               Sophieraiin <span class="blue-tick">✓</span>
             </div>
@@ -372,7 +448,6 @@
   </div>
 
   <script>
-    // Menü Kontrolleri
     const menuToggle = document.getElementById('menuToggle');
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
@@ -387,7 +462,6 @@
       overlay.classList.remove('active');
     });
 
-    // Tema Değiştirici
     const themeToggle = document.getElementById('themeToggle');
     const body = document.body;
 
@@ -399,37 +473,35 @@
       }
     });
 
-    // Sayfa Gezinme ve Video Açma Fonksiyonları
-    function showHome() {
-      document.getElementById('homeView').classList.remove('hidden');
+    function hideAllViews() {
+      document.getElementById('homeView').classList.add('hidden');
+      document.getElementById('channelView').classList.add('hidden');
       document.getElementById('videoView').classList.add('hidden');
+    }
+
+    function showHome() {
+      hideAllViews();
+      document.getElementById('homeView').classList.remove('hidden');
       document.getElementById('videoIframe').src = '';
-      document.getElementById('pageCategoryTitle').innerText = 'ÖNE ÇIKAN VİDEOLAR';
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+    }
+
+    function showChannelSophie() {
+      hideAllViews();
+      document.getElementById('channelView').classList.remove('hidden');
+      document.getElementById('videoIframe').src = '';
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+      window.scrollTo(0, 0);
     }
 
     function openVideo(title, embedUrl) {
-      document.getElementById('homeView').classList.add('hidden');
+      hideAllViews();
       document.getElementById('videoView').classList.remove('hidden');
       document.getElementById('playingVideoTitle').innerText = title;
       document.getElementById('videoIframe').src = embedUrl;
       window.scrollTo(0, 0);
-    }
-
-    function filterCategory(cat) {
-      showHome();
-      sidebar.classList.remove('active');
-      overlay.classList.remove('active');
-      
-      const titleElement = document.getElementById('pageCategoryTitle');
-      if (cat === 'sophie') {
-        titleElement.innerText = 'SOPHIERAIIN KANAL VİDEOLARI';
-      } else if (cat === 'hd') {
-        titleElement.innerText = 'FULL HD VİDEOLAR';
-      } else if (cat === 'pop') {
-        titleElement.innerText = 'POPÜLER VİDEOLAR';
-      } else {
-        titleElement.innerText = 'ÖNE ÇIKAN VİDEOLAR';
-      }
     }
   </script>
 
