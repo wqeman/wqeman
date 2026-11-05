@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WQEMAN</title>
+  <title>WQEMAN🙈</title>
   <style>
     :root {
       --bg-color: #121212;
@@ -18,11 +18,25 @@
       --sidebar-hover: #333333;
     }
 
+    [data-theme="light"] {
+      --bg-color: #f4f4f4;
+      --text-color: #111111;
+      --header-bg: #ffffff;
+      --card-bg: #ffffff;
+      --border-color: #dddddd;
+      --btn-bg: #ff3399;
+      --btn-text: #ffffff;
+      --sidebar-bg: #ffffff;
+      --sidebar-text: #000000;
+      --sidebar-hover: #eeeeee;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: Arial, Helvetica, sans-serif;
+      transition: background-color 0.3s, color 0.3s;
     }
 
     body {
@@ -42,17 +56,17 @@
       border-bottom: 1px solid var(--border-color);
     }
 
-    .header-left {
+    .header-left, .header-right {
       display: flex;
       align-items: center;
       gap: 12px;
     }
 
-    .menu-btn {
+    .menu-btn, .icon-btn {
       background: none;
       border: none;
       color: var(--text-color);
-      font-size: 24px;
+      font-size: 20px;
       cursor: pointer;
     }
 
@@ -63,7 +77,6 @@
       cursor: pointer;
     }
 
-    /* Sol Menü (Kategoriler) Düzenlemesi */
     .dropdown-menu {
       position: fixed;
       top: 0;
@@ -109,6 +122,7 @@
     .menu-list li a {
       display: flex;
       align-items: center;
+      gap: 10px;
       padding: 14px 20px;
       color: var(--sidebar-text);
       text-decoration: none;
@@ -282,6 +296,7 @@
       font-weight: bold;
     }
 
+    /* Oynatıcı & Reklam Katmanı */
     .player-wrapper {
       position: relative;
       padding-bottom: 56.25%;
@@ -309,10 +324,20 @@
       height: 100%;
       background: #000;
       z-index: 10;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: flex-end;
+    }
+
+    .ad-fullscreen-btn {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      border: 1px solid #555;
+      padding: 8px 14px;
+      font-size: 13px;
+      border-radius: 4px;
+      cursor: pointer;
+      z-index: 15;
     }
 
     .skip-ad-btn {
@@ -334,6 +359,7 @@
       cursor: not-allowed;
       opacity: 0.7;
       border-color: #555;
+      pointer-events: none;
     }
 
     .hidden {
@@ -341,12 +367,15 @@
     }
   </style>
 </head>
-<body>
+<body data-theme="dark">
 
   <header>
     <div class="header-left">
       <button class="menu-btn" id="menuToggle">☰</button>
-      <span class="logo" onclick="showHome()">WQEMAN</span>
+      <span class="logo" onclick="showHome()">WQEMAN🙈</span>
+    </div>
+    <div class="header-right">
+      <button class="icon-btn" id="themeToggle" title="Tema Değiştir">🌓</button>
     </div>
   </header>
 
@@ -357,10 +386,10 @@
       <p>WQEMAN.com</p>
     </div>
     <ul class="menu-list">
-      <li><a onclick="showHome()">Baslangic Sayfasi</a></li>
-      <li><a onclick="showChannelSophie()">Sophieraiin Kanali</a></li>
-      <li><a onclick="showHome()">Full HD Videolar</a></li>
-      <li><a onclick="showHome()">Populer Icerikler</a></li>
+      <li><a onclick="showHome()">🏠 Başlangıç Sayfası</a></li>
+      <li><a onclick="showChannelSophie()">✨ Sophieraiin Kanalı</a></li>
+      <li><a onclick="showHome()">🎬 Full HD Videolar</a></li>
+      <li><a onclick="showHome()">🔥 Popüler İçerikler</a></li>
     </ul>
   </div>
 
@@ -368,19 +397,19 @@
 
   <!-- Ana Sayfa -->
   <div class="container" id="homeView">
-    <div class="section-title">ONE CIKAN VIDEOLAR</div>
+    <div class="section-title">ÖNE ÇIKAN VİDEOLAR</div>
     <div id="videoList">
-      <div class="video-card" onclick="openVideo('Sophie Rain Krem Santi Ile Sov Yapiyor', 'https://voe.sx/e/vdkex5vzitjh')">
+      <div class="video-card" onclick="openVideo('Sophie Rain Krem Şanti İle Şov Yapıyor', 'https://voe.sx/e/vdkex5vzitjh')">
         <div class="thumbnail-box">
           <img src="https://i.postimg.cc/pTMp10rZ/2-(1).jpg" alt="Kapak">
         </div>
         <div class="video-details">
-          <div class="video-title">Sophie Rain Krem Santi Ile Sov Yapiyor</div>
+          <div class="video-title">Sophie Rain Krem Şanti İle Şov Yapıyor</div>
           <div class="channel-row" onclick="event.stopPropagation(); showChannelSophie();">
             <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Avatar" class="channel-avatar">
             <div class="channel-name-area">Sophieraiin <span class="blue-tick">✓</span></div>
           </div>
-          <span class="action-btn">Hemen Izle</span>
+          <span class="action-btn">Hemen İzle 🚀</span>
         </div>
       </div>
     </div>
@@ -394,22 +423,22 @@
         <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" class="channel-profile-avatar">
         <div class="channel-meta">
           <h1>Sophieraiin <span class="blue-tick">✓</span></h1>
-          <p>Resmi icerik kanali.</p>
+          <p>Resmi içerik kanalı. Özel performanslar ve gösteriler.</p>
         </div>
       </div>
     </div>
-    <div class="section-title">Kanalin Videolari</div>
-    <div class="video-card" onclick="openVideo('Sophie Rain Krem Santi Ile Sov Yapiyor', 'https://voe.sx/e/vdkex5vzitjh')">
+    <div class="section-title">Kanalın Videoları</div>
+    <div class="video-card" onclick="openVideo('Sophie Rain Krem Şanti İle Şov Yapıyor', 'https://voe.sx/e/vdkex5vzitjh')">
       <div class="thumbnail-box">
         <img src="https://i.postimg.cc/pTMp10rZ/2-(1).jpg" alt="Kapak">
       </div>
       <div class="video-details">
-        <div class="video-title">Sophie Rain Krem Santi Ile Sov Yapiyor</div>
+        <div class="video-title">Sophie Rain Krem Şanti İle Şov Yapıyor</div>
         <div class="channel-row">
           <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" class="channel-avatar">
           <div class="channel-name-area">Sophieraiin <span class="blue-tick">✓</span></div>
         </div>
-        <span class="action-btn">Hemen Izle</span>
+        <span class="action-btn">Hemen İzle 🚀</span>
       </div>
     </div>
   </div>
@@ -420,7 +449,8 @@
       <!-- Reklam Katmanı -->
       <div class="ad-overlay" id="adOverlay">
         <video id="adVideo" src="reklam.mp4" playsinline></video>
-        <button class="skip-ad-btn disabled" id="skipAdBtn">Reklami Gec (9)</button>
+        <button class="ad-fullscreen-btn" onclick="toggleAdFullscreen()">⛶ Tam Ekran</button>
+        <button class="skip-ad-btn disabled" id="skipAdBtn">Reklamı Geç (5)</button>
       </div>
 
       <!-- Asıl Video -->
@@ -438,6 +468,8 @@
     const menuToggle = document.getElementById('menuToggle');
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
 
     menuToggle.addEventListener('click', () => {
       sidebar.classList.add('active');
@@ -447,6 +479,14 @@
     overlay.addEventListener('click', () => {
       sidebar.classList.remove('active');
       overlay.classList.remove('active');
+    });
+
+    themeToggle.addEventListener('click', () => {
+      if (body.getAttribute('data-theme') === 'dark') {
+        body.setAttribute('data-theme', 'light');
+      } else {
+        body.setAttribute('data-theme', 'dark');
+      }
     });
 
     function hideAllViews() {
@@ -472,6 +512,17 @@
       window.scrollTo(0, 0);
     }
 
+    function toggleAdFullscreen() {
+      const adVideo = document.getElementById('adVideo');
+      if (adVideo.requestFullscreen) {
+        adVideo.requestFullscreen();
+      } else if (adVideo.webkitRequestFullscreen) {
+        adVideo.webkitRequestFullscreen();
+      }
+    }
+
+    let countdownInterval;
+
     function openVideo(title, embedUrl) {
       hideAllViews();
       document.getElementById('videoView').classList.remove('hidden');
@@ -479,47 +530,51 @@
       document.getElementById('videoIframe').src = embedUrl;
       window.scrollTo(0, 0);
 
-      // Reklam Kontrolleri
       const adOverlay = document.getElementById('adOverlay');
       const adVideo = document.getElementById('adVideo');
       const skipAdBtn = document.getElementById('skipAdBtn');
       
       adOverlay.classList.remove('hidden');
       adVideo.currentTime = 0;
-      adVideo.muted = false; // Sesi aktif et
+      adVideo.muted = false;
 
-      // Kullanıcı tıklaması üzerinden sesi garantili oynat
       const playPromise = adVideo.play();
       if (playPromise !== undefined) {
         playPromise.catch(() => {
-          // Eğer sesli oynatma engellenirse sessiz başlatıp devam ettir
           adVideo.muted = true;
           adVideo.play();
         });
       }
 
-      let timeLeft = 9;
-      skipAdBtn.innerText = `Reklami Gec (${timeLeft})`;
-      skipAdBtn.classList.add('disabled');
+      clearInterval(countdownInterval);
 
-      const countdown = setInterval(() => {
-        timeLeft--;
-        
-        if (timeLeft <= 4 && timeLeft > 0) {
-          skipAdBtn.innerText = `Reklami Gec (${timeLeft})`;
+      let skipTimer = 5;  // 5 saniye bekleme süresi
+      let totalTimer = 9; // Toplam 9 saniyelik reklam süresi
+
+      skipAdBtn.innerText = `Reklamı Geç (${skipTimer})`;
+      skipAdBtn.classList.add('disabled');
+      skipAdBtn.onclick = null;
+
+      countdownInterval = setInterval(() => {
+        skipTimer--;
+        totalTimer--;
+
+        if (skipTimer > 0) {
+          skipAdBtn.innerText = `Reklamı Geç (${skipTimer})`;
+        } else if (skipTimer === 0) {
+          skipAdBtn.innerText = 'Reklamı Geç ⏩';
           skipAdBtn.classList.remove('disabled');
           skipAdBtn.onclick = () => {
-            clearInterval(countdown);
+            clearInterval(countdownInterval);
             adVideo.pause();
             adOverlay.classList.add('hidden');
           };
-        } 
-        else if (timeLeft <= 0) {
-          clearInterval(countdown);
+        }
+
+        if (totalTimer <= 0) {
+          clearInterval(countdownInterval);
           adVideo.pause();
           adOverlay.classList.add('hidden');
-        } else {
-          skipAdBtn.innerText = `Reklami Gec (${timeLeft})`;
         }
       }, 1000);
     }
