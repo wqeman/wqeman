@@ -5,14 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WQEMAN🙈</title>
   <style>
-    /* Tema Değişkenleri */
     :root {
       --bg-color: #121212;
       --text-color: #ffffff;
       --header-bg: #000000;
       --card-bg: #1a1a1a;
       --border-color: #282828;
-      --btn-bg: #ff6600; /* Siyah tema için Turuncu */
+      --btn-bg: #ff6600;
       --btn-text: #ffffff;
       --sidebar-bg: #ffffff;
       --sidebar-text: #000000;
@@ -25,7 +24,7 @@
       --header-bg: #ffffff;
       --card-bg: #ffffff;
       --border-color: #dddddd;
-      --btn-bg: #ff3399; /* Beyaz tema için Pembe */
+      --btn-bg: #ff3399;
       --btn-text: #ffffff;
       --sidebar-bg: #ffffff;
       --sidebar-text: #000000;
@@ -45,7 +44,6 @@
       color: var(--text-color);
     }
 
-    /* Header / Üst Alan */
     header {
       background-color: var(--header-bg);
       display: flex;
@@ -79,7 +77,6 @@
       text-decoration: none;
     }
 
-    /* Açılır Menüler (Sidebar & Dil Menüsü) */
     .dropdown-menu {
       position: fixed;
       top: 0;
@@ -149,14 +146,12 @@
       display: block;
     }
 
-    /* Ana İçerik */
     .container {
       max-width: 800px;
       margin: 0 auto;
       padding: 12px;
     }
 
-    /* Video Kartı */
     .video-card {
       background-color: var(--card-bg);
       border-radius: 6px;
@@ -189,7 +184,6 @@
       line-height: 1.4;
     }
 
-    /* Kanal Bilgisi */
     .channel-row {
       display: flex;
       align-items: center;
@@ -247,21 +241,17 @@
 </head>
 <body data-theme="dark">
 
-  <!-- Header -->
   <header>
     <div class="header-left">
       <button class="menu-btn" id="menuToggle">☰</button>
       <a href="#" class="logo">WQEMAN🙈</a>
     </div>
     <div class="header-right">
-      <!-- Dil Seçim Butonu -->
       <button class="icon-btn" id="langToggle" title="Dil Seç / Language">🌍</button>
-      <!-- Tema Değiştirme Butonu -->
       <button class="icon-btn" id="themeToggle" title="Tema Değiştir">🌓</button>
     </div>
   </header>
 
-  <!-- Sol Kategori Menüsü -->
   <div class="dropdown-menu" id="sidebar">
     <div class="menu-header">
       <h2 id="txtMenuTitle">Kategoriler</h2>
@@ -275,7 +265,6 @@
     </ul>
   </div>
 
-  <!-- Sağ Dil Seçim Menüsü -->
   <div class="dropdown-menu" id="langMenu" style="left: auto; right: -100%;">
     <div class="menu-header">
       <h2>Dil Seçin / Select Language</h2>
@@ -290,7 +279,6 @@
 
   <div class="overlay" id="overlay"></div>
 
-  <!-- İçerik Alanı -->
   <div class="container">
     <div class="video-card">
       <div class="thumbnail-box">
@@ -313,7 +301,6 @@
   </div>
 
   <script>
-    // Menü ve Dil Paneli Kontrolleri
     const menuToggle = document.getElementById('menuToggle');
     const langToggle = document.getElementById('langToggle');
     const sidebar = document.getElementById('sidebar');
@@ -336,7 +323,6 @@
       overlay.classList.remove('active');
     });
 
-    // Tema Değiştirici (Siyah-Turuncu / Beyaz-Pembe)
     const themeToggle = document.getElementById('themeToggle');
     const body = document.body;
 
@@ -348,7 +334,6 @@
       }
     });
 
-    // Çoklu Dil Sözlüğü
     const translations = {
       tr: {
         title: "Sophie Rain Krem Şanti İle Şov Yapıyor",
@@ -397,7 +382,6 @@
       document.getElementById('catHd').innerText = translations[lang].cat3;
       document.getElementById('catPop').innerText = translations[lang].cat4;
 
-      // Menüyü kapat
       sidebar.classList.remove('active');
       langMenu.style.right = '-100%';
       overlay.classList.remove('active');
