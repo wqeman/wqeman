@@ -264,7 +264,7 @@
 
     .thumbnail-box img {
       width: 100%;
-      height: auto;
+      height: 180px;
       display: block;
       object-fit: cover;
     }
@@ -458,7 +458,7 @@
       <!-- Comatozze Videosu -->
       <div class="video-card" data-category="Üvey Aile" onclick="openVideo('Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.', 'https://voe.sx/e/gbjcwhsp3z1a', '📅 16 Ekim 2026', 'Comatozze', 'https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)')">
         <div class="thumbnail-box">
-          <img src="https://i.postimg.cc/pTMp10rZ/2-(1).jpg" alt="Kapak">
+          <img src="https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)" alt="Comatozze Kapak">
         </div>
         <div class="video-details">
           <div class="video-info-left">
@@ -474,9 +474,9 @@
       </div>
 
       <!-- Sophieraiin Videosu -->
-      <div class="video-card" data-category="Özel" onclick="openVideo('Sophie Rain Krem Şanti İle Şov Yapıyor', 'https://vo.sx/e/vdkex5vzitjh', '📅 15 Ekim 2026', 'Sophieraiin', 'https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg')">
+      <div class="video-card" data-category="Özel" onclick="openVideo('Sophie Rain Krem Şanti İle Şov Yapıyor', 'https://voe.sx/e/vdkex5vzitjh', '📅 15 Ekim 2026', 'Sophieraiin', 'https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg')">
         <div class="thumbnail-box">
-          <img src="https://i.postimg.cc/pTMp10rZ/2-(1).jpg" alt="Kapak">
+          <img src="https://i.postimg.cc/pTMp10rZ/2-(1).jpg" alt="Sophie Kapak">
         </div>
         <div class="video-details">
           <div class="video-info-left">
@@ -507,7 +507,7 @@
       </div>
     </div>
     <div class="section-title">Kanalın Videoları</div>
-    <div class="video-card" onclick="openVideo('Sophie Rain Krem Şanti İle Şov Yapıyor', 'https://vo.sx/e/vdkex5vzitjh', '📅 15 Ekim 2026', 'Sophieraiin', 'https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg')">
+    <div class="video-card" onclick="openVideo('Sophie Rain Krem Şanti İle Şov Yapıyor', 'https://voe.sx/e/vdkex5vzitjh', '📅 15 Ekim 2026', 'Sophieraiin', 'https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg')">
       <div class="thumbnail-box">
         <img src="https://i.postimg.cc/pTMp10rZ/2-(1).jpg" alt="Kapak">
       </div>
@@ -540,7 +540,7 @@
     <div class="section-title">Kanalın Videoları</div>
     <div class="video-card" onclick="openVideo('Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.', 'https://voe.sx/e/gbjcwhsp3z1a', '📅 16 Ekim 2026', 'Comatozze', 'https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)')">
       <div class="thumbnail-box">
-        <img src="https://i.postimg.cc/pTMp10rZ/2-(1).jpg" alt="Kapak">
+        <img src="https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)" alt="Kapak">
       </div>
       <div class="video-details">
         <div class="video-info-left">
@@ -586,8 +586,8 @@
     const body = document.body;
 
     menuToggle.addEventListener('click', () => {
-      sidebar.classList.add('active');
-      overlay.classList.add('active');
+      sidebar.classList.toggle('active');
+      overlay.classList.toggle('active');
     });
 
     overlay.addEventListener('click', () => {
@@ -666,7 +666,6 @@
 
     function showChannelComatozze() {
       hideAllViews();
-      document.getElementById('channelComatozzeView').classList.add('hidden'); // Düzeltme
       document.getElementById('channelComatozzeView').classList.remove('hidden');
       document.getElementById('videoIframe').src = '';
       sidebar.classList.remove('active');
@@ -685,4 +684,4 @@
 
     let countdownInterval;
 
-    function openVideo(title, embedUrl, dateStr, channelName,
+    function openVideo(title, embedUrl, dateStr,
