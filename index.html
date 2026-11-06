@@ -36,7 +36,6 @@
       padding: 0;
       box-sizing: border-box;
       font-family: Arial, Helvetica, sans-serif;
-      transition: background-color 0.3s, color 0.3s;
     }
 
     body {
@@ -62,16 +61,12 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      position: relative;
-      z-index: 1001;
     }
 
     .search-container {
       flex: 1;
       max-width: 350px;
       display: flex;
-      position: relative;
-      z-index: 1001;
     }
 
     .search-input {
@@ -101,9 +96,9 @@
       background: none;
       border: none;
       color: var(--text-color);
-      font-size: 20px;
+      font-size: 22px;
       cursor: pointer;
-      padding: 4px;
+      padding: 6px;
     }
 
     .logo {
@@ -116,7 +111,7 @@
     .dropdown-menu {
       position: fixed;
       top: 0;
-      left: -100%;
+      left: -280px;
       width: 280px;
       height: 100%;
       background-color: var(--sidebar-bg);
@@ -182,20 +177,16 @@
       background: rgba(0, 0, 0, 0.7);
       z-index: 5000;
       display: none;
-      pointer-events: none;
     }
 
     .overlay.active {
       display: block;
-      pointer-events: auto;
     }
 
     .container {
       max-width: 800px;
       margin: 0 auto;
       padding: 12px;
-      position: relative;
-      z-index: 1;
     }
 
     .section-title {
@@ -259,7 +250,6 @@
       margin-bottom: 20px;
       border: 1px solid var(--border-color);
       cursor: pointer;
-      position: relative;
     }
 
     .thumbnail-box {
@@ -417,8 +407,12 @@
       pointer-events: none;
     }
 
-    .hidden {
-      display: none !important;
+    .page-view {
+      display: none;
+    }
+
+    .page-view.active {
+      display: block;
     }
   </style>
 </head>
@@ -426,18 +420,18 @@
 
   <header>
     <div class="header-left">
-      <button class="menu-btn" id="menuToggle" type="button">☰</button>
-      <span class="logo" id="logoBtn">WQEMAN🙈</span>
+      <button class="menu-btn" type="button" onclick="toggleMenu()">☰</button>
+      <span class="logo" onclick="showHome()">WQEMAN🙈</span>
     </div>
 
     <!-- Arama Motoru -->
     <div class="search-container">
-      <input type="text" id="searchInput" class="search-input" placeholder="Video, kanal veya kategori ara...">
-      <button class="search-btn" id="searchBtn" type="button">🔍</button>
+      <input type="text" id="searchInput" class="search-input" placeholder="Video, kanal veya kategori ara..." onkeyup="filterVideos()">
+      <button class="search-btn" type="button" onclick="filterVideos()">🔍</button>
     </div>
 
     <div class="header-right">
-      <button class="icon-btn" id="themeToggle" title="Tema Değiştir" type="button">🌓</button>
+      <button class="icon-btn" id="themeToggle" title="Tema Değiştir" type="button" onclick="toggleTheme()">🌓</button>
     </div>
   </header>
 
@@ -448,23 +442,23 @@
       <p>WQEMAN.com</p>
     </div>
     <ul class="menu-list">
-      <li><a id="navHome">🏠 Başlangıç Sayfası</a></li>
-      <li><a id="navSophie">✨ Sophieraiin Kanalı</a></li>
-      <li><a id="navComatozze">🔥 Comatozze Kanalı</a></li>
-      <li><a id="navCatStep">💡 Kategori: Üvey Aile / Dram</a></li>
-      <li><a id="navCatSpecial">🎬 Kategori: Özel Gösteriler</a></li>
+      <li><a onclick="showHome(); closeMenu();">🏠 Başlangıç Sayfası</a></li>
+      <li><a onclick="showChannelSophie(); closeMenu();">✨ Sophieraiin Kanalı</a></li>
+      <li><a onclick="showChannelComatozze(); closeMenu();">🔥 Comatozze Kanalı</a></li>
+      <li><a onclick="filterByCategory('Üvey Aile');">💡 Kategori: Üvey Aile / Dram</a></li>
+      <li><a onclick="filterByCategory('Özel');">🎬 Kategori: Özel Gösteriler</a></li>
     </ul>
   </div>
 
-  <div class="overlay" id="overlay"></div>
+  <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
   <!-- Ana Sayfa -->
-  <div class="container" id="homeView">
+  <div class="container page-view active" id="homeView">
     <div class="section-title">ÖNE ÇIKAN VİDEOLAR</div>
     <div id="videoList">
       
       <!-- Comatozze Videosu (6 Kasım 2026) -->
-      <div class="video-card" data-category="Üvey Aile" data-title="Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi." data-url="https://voe.sx/e/gbjcwhsp3z1a" data-date="📅 6 Kasım 2026" data-channel="Comatozze" data-avatar="https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)(mh=n7tIeIoHniVFwhIe)200x200.jpg">
+      <div class="video-card" data-category="Üvey Aile" onclick="openVideo('Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.', 'https://voe.sx/e/gbjcwhsp3z1a', '📅 6 Kasım 2026', 'Comatozze', 'https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)(mh=n7tIeIoHniVFwhIe)200x200.jpg')">
         <div class="thumbnail-box">
           <img src="https://pix-cdn77.phncdn.com/c6541/videos/202610/25/66946915/original/01a17308-77b0-74a0-972b-6742480fa576.jpg/plain/rs:fit:480:270?hash=9TLrW3HOH5pSmPwysoWhrRRqg3U=&validto=1794061651" alt="Comatozze Kapak">
         </div>
@@ -472,7 +466,7 @@
           <div class="video-info-left">
             <div class="video-title">Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.</div>
             <div class="video-date">📅 6 Kasım 2026 | Kategori: Üvey Aile</div>
-            <div class="channel-row" data-action="comatozze">
+            <div class="channel-row" onclick="event.stopPropagation(); showChannelComatozze();">
               <img src="https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)(mh=n7tIeIoHniVFwhIe)200x200.jpg" alt="Avatar" class="channel-avatar">
               <div class="channel-name-area">Comatozze <span class="blue-tick">✓</span></div>
             </div>
@@ -482,7 +476,7 @@
       </div>
 
       <!-- Sophieraiin Videosu (5 Kasım 2026) -->
-      <div class="video-card" data-category="Özel" data-title="Sophie Rain Krem Şanti İle Şov Yapıyor" data-url="https://voe.sx/e/vdkex5vzitjh" data-date="📅 5 Kasım 2026" data-channel="Sophieraiin" data-avatar="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg">
+      <div class="video-card" data-category="Özel" onclick="openVideo('Sophie Rain Krem Şanti İle Şov Yapıyor', 'https://voe.sx/e/vdkex5vzitjh', '📅 5 Kasım 2026', 'Sophieraiin', 'https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg')">
         <div class="thumbnail-box">
           <img src="https://i.postimg.cc/pTMp10rZ/2-(1).jpg" alt="Sophie Kapak">
         </div>
@@ -490,7 +484,7 @@
           <div class="video-info-left">
             <div class="video-title">Sophie Rain Krem Şanti İle Şov Yapıyor</div>
             <div class="video-date">📅 5 Kasım 2026 | Kategori: Özel</div>
-            <div class="channel-row" data-action="sophie">
+            <div class="channel-row" onclick="event.stopPropagation(); showChannelSophie();">
               <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Avatar" class="channel-avatar">
               <div class="channel-name-area">Sophieraiin <span class="blue-tick">✓</span></div>
             </div>
@@ -503,7 +497,7 @@
   </div>
 
   <!-- Sophie Kanal Sayfası -->
-  <div class="container hidden" id="channelSophieView">
+  <div class="container page-view" id="channelSophieView">
     <div class="channel-profile-header">
       <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" class="channel-banner-img">
       <div class="channel-profile-info">
@@ -515,7 +509,7 @@
       </div>
     </div>
     <div class="section-title">Kanalın Videoları</div>
-    <div class="video-card" data-title="Sophie Rain Krem Şanti İle Şov Yapıyor" data-url="https://voe.sx/e/vdkex5vzitjh" data-date="📅 5 Kasım 2026" data-channel="Sophieraiin" data-avatar="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg">
+    <div class="video-card" onclick="openVideo('Sophie Rain Krem Şanti İle Şov Yapıyor', 'https://voe.sx/e/vdkex5vzitjh', '📅 5 Kasım 2026', 'Sophieraiin', 'https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg')">
       <div class="thumbnail-box">
         <img src="https://i.postimg.cc/pTMp10rZ/2-(1).jpg" alt="Kapak">
       </div>
@@ -534,7 +528,7 @@
   </div>
 
   <!-- Comatozze Kanal Sayfası -->
-  <div class="container hidden" id="channelComatozzeView">
+  <div class="container page-view" id="channelComatozzeView">
     <div class="channel-profile-header">
       <img src="https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)(mh=n7tIeIoHniVFwhIe)200x200.jpg" class="channel-banner-img">
       <div class="channel-profile-info">
@@ -546,7 +540,7 @@
       </div>
     </div>
     <div class="section-title">Kanalın Videoları</div>
-    <div class="video-card" data-title="Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi." data-url="https://voe.sx/e/gbjcwhsp3z1a" data-date="📅 6 Kasım 2026" data-channel="Comatozze" data-avatar="https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)(mh=n7tIeIoHniVFwhIe)200x200.jpg">
+    <div class="video-card" onclick="openVideo('Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.', 'https://voe.sx/e/gbjcwhsp3z1a', '📅 6 Kasım 2026', 'Comatozze', 'https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)(mh=n7tIeIoHniVFwhIe)200x200.jpg')">
       <div class="thumbnail-box">
         <img src="https://pix-cdn77.phncdn.com/c6541/videos/202610/25/66946915/original/01a17308-77b0-74a0-972b-6742480fa576.jpg/plain/rs:fit:480:270?hash=9TLrW3HOH5pSmPwysoWhrRRqg3U=&validto=1794061651" alt="Kapak">
       </div>
@@ -565,12 +559,12 @@
   </div>
 
   <!-- Video İzleme Sayfası -->
-  <div class="container hidden" id="videoView">
+  <div class="container page-view" id="videoView">
     <div class="player-wrapper">
       <!-- Reklam Katmanı -->
       <div class="ad-overlay" id="adOverlay">
         <video id="adVideo" src="reklam.mp4" playsinline></video>
-        <button class="ad-fullscreen-btn" id="adFullscreenBtn" type="button">⛶ Tam Ekran</button>
+        <button class="ad-fullscreen-btn" type="button" onclick="toggleAdFullscreen()">⛶ Tam Ekran</button>
         <button class="skip-ad-btn disabled" id="skipAdBtn" type="button">Reklamı Geç (5)</button>
       </div>
 
@@ -587,77 +581,101 @@
   </div>
 
   <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
-    const themeToggle = document.getElementById('themeToggle');
-    const logoBtn = document.getElementById('logoBtn');
-    const searchBtn = document.getElementById('searchBtn');
-    const searchInput = document.getElementById('searchInput');
-    const body = document.body;
-
-    function toggleMenu(e) {
-      e.stopPropagation();
+    function toggleMenu() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('overlay');
       sidebar.classList.toggle('active');
       overlay.classList.toggle('active');
     }
 
     function closeMenu() {
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('overlay');
       sidebar.classList.remove('active');
       overlay.classList.remove('active');
     }
 
-    menuToggle.addEventListener('click', toggleMenu);
-    overlay.addEventListener('click', closeMenu);
-    logoBtn.addEventListener('click', showHome);
-
-    themeToggle.addEventListener('click', () => {
+    function toggleTheme() {
+      const body = document.body;
       if (body.getAttribute('data-theme') === 'dark') {
         body.setAttribute('data-theme', 'light');
       } else {
         body.setAttribute('data-theme', 'dark');
       }
-    });
+    }
 
-    document.getElementById('navHome').addEventListener('click', showHome);
-    document.getElementById('navSophie').addEventListener('click', showChannelSophie);
-    document.getElementById('navComatozze').addEventListener('click', showChannelComatozze);
-    document.getElementById('navCatStep').addEventListener('click', () => filterByCategory('Üvey Aile'));
-    document.getElementById('navCatSpecial').addEventListener('click', () => filterByCategory('Özel'));
+    function filterVideos() {
+      let input = document.getElementById('searchInput').value.toLowerCase();
+      let cards = document.querySelectorAll('#homeView .video-card');
 
-    searchBtn.addEventListener('click', filterVideos);
-    searchInput.addEventListener('keyup', filterVideos);
+      showHome(); 
 
-    // Video kartlarına tıklama olayını dinamik ve güvenli ekleme
-    document.querySelectorAll('.video-card').forEach(card => {
-      card.addEventListener('click', (e) => {
-        // Eğer kanal adına tıklandıysa ana videoyu açma, ilgili kanala git
-        const channelRow = e.target.closest('.channel-row');
-        if (channelRow) {
-          const action = channelRow.getAttribute('data-action');
-          if (action === 'comatozze') {
-            showChannelComatozze();
-          } else {
-            showChannelSophie();
-          }
-          return;
-        }
+      cards.forEach(card => {
+        let title = card.querySelector('.video-title').innerText.toLowerCase();
+        let channel = card.querySelector('.channel-name-area').innerText.toLowerCase();
+        let category = card.getAttribute('data-category').toLowerCase();
 
-        const title = card.getAttribute('data-title');
-        const url = card.getAttribute('data-url');
-        const date = card.getAttribute('data-date');
-        const channel = card.getAttribute('data-channel');
-        const avatar = card.getAttribute('data-avatar');
-
-        if (title && url) {
-          openVideo(title, url, date, channel, avatar);
+        if (title.includes(input) || channel.includes(input) || category.includes(input)) {
+          card.style.display = "";
+        } else {
+          card.style.display = "none";
         }
       });
-    });
+    }
 
-    // Kanal satırları için ek dinleyici (Kanal sayfalarındakiler için)
-    document.querySelectorAll('.channel-row').forEach(row => {
-      row.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const action = row.getAttribute('data-action');
-        if (acti
+    function filterByCategory(catName) {
+      let cards = document.querySelectorAll('#homeView .video-card');
+      showHome();
+      closeMenu();
+
+      cards.forEach(card => {
+        let category = card.getAttribute('data-category');
+        if (category === catName) {
+          card.style.display = "";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+
+    function hideAllViews() {
+      document.querySelectorAll('.page-view').forEach(view => {
+        view.classList.remove('active');
+      });
+    }
+
+    function showHome() {
+      hideAllViews();
+      document.getElementById('homeView').classList.add('active');
+      document.getElementById('videoIframe').src = '';
+      closeMenu();
+    }
+
+    function showChannelSophie() {
+      hideAllViews();
+      document.getElementById('channelSophieView').classList.add('active');
+      document.getElementById('videoIframe').src = '';
+      closeMenu();
+      window.scrollTo(0, 0);
+    }
+
+    function showChannelComatozze() {
+      hideAllViews();
+      document.getElementById('channelComatozzeView').classList.add('active');
+      document.getElementById('videoIframe').src = '';
+      closeMenu();
+      window.scrollTo(0, 0);
+    }
+
+    function toggleAdFullscreen() {
+      const adVideo = document.getElementById('adVideo');
+      if (adVideo.requestFullscreen) {
+        adVideo.requestFullscreen();
+      } else if (adVideo.webkitRequestFullscreen) {
+        adVideo.webkitRequestFullscreen();
+      }
+    }
+
+    let countdownInterval;
+
+    function o
