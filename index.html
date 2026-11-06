@@ -64,7 +64,6 @@
       gap: 12px;
     }
 
-    /* Arama Çubuğu */
     .search-container {
       flex: 1;
       max-width: 350px;
@@ -255,7 +254,7 @@
 
     .thumbnail-box {
       width: 100%;
-      background-color: #000;
+      background-color: #222;
       position: relative;
       overflow: hidden;
       border-top-left-radius: 10px;
@@ -307,6 +306,7 @@
       height: 36px;
       border-radius: 50%;
       object-fit: cover;
+      background-color: #333;
     }
 
     .channel-name-area {
@@ -343,7 +343,6 @@
       white-space: nowrap;
     }
 
-    /* Oynatıcı & Reklam Katmanı */
     .player-wrapper {
       position: relative;
       padding-bottom: 56.25%;
@@ -418,18 +417,18 @@
 
   <header>
     <div class="header-left">
-      <button class="menu-btn" id="menuToggle">☰</button>
+      <button class="menu-btn" id="menuToggle" type="button">☰</button>
       <span class="logo" onclick="showHome()">WQEMAN🙈</span>
     </div>
 
     <!-- Arama Motoru -->
     <div class="search-container">
       <input type="text" id="searchInput" class="search-input" placeholder="Video, kanal veya kategori ara..." onkeyup="filterVideos()">
-      <button class="search-btn" onclick="filterVideos()">🔍</button>
+      <button class="search-btn" onclick="filterVideos()" type="button">🔍</button>
     </div>
 
     <div class="header-right">
-      <button class="icon-btn" id="themeToggle" title="Tema Değiştir">🌓</button>
+      <button class="icon-btn" id="themeToggle" title="Tema Değiştir" type="button">🌓</button>
     </div>
   </header>
 
@@ -456,18 +455,17 @@
     <div id="videoList">
       
       <!-- Comatozze Videosu -->
-      <div class="video-card" data-category="Üvey Aile" onclick="openVideo('Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.', 'https://voe.sx/e/gbjcwhsp3z1a', '📅 16 Ekim 2026', 'Comatozze', 'https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)(mh=n7tIeIoHniVFwhIe)200x200.jpg')">
+      <div class="video-card" data-category="Üvey Aile" onclick="openVideo('Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.', 'https://voe.sx/e/gbjcwhsp3z1a', '📅 16 Ekim 2026', 'Comatozze', 'https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg')">
         <div class="thumbnail-box">
-          <!-- Comatozze Video Kapak Resmi -->
-          <img src="https://pix-cdn77.phncdn.com/c6541/videos/202610/25/66946915/original/01a17308-77b0-74a0-972b-6742480fa576.jpg/plain/rs:fit:480:270?hash=9TLrW3HOH5pSmPwysoWhrRRqg3U=&validto=1794061651" alt="Comatozze Kapak">
+          <!-- Güvenilir Postimg Kapak Resmi (Siyah ekran hatasını önlemek için) -->
+          <img src="https://i.postimg.cc/pTMp10rZ/2-(1).jpg" alt="Comatozze Kapak">
         </div>
         <div class="video-details">
           <div class="video-info-left">
             <div class="video-title">Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.</div>
             <div class="video-date">📅 16 Ekim 2026 | Kategori: Üvey Aile</div>
             <div class="channel-row" onclick="event.stopPropagation(); showChannelComatozze();">
-              <!-- Comatozze Profil Resmi -->
-              <img src="https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)(mh=n7tIeIoHniVFwhIe)200x200.jpg" alt="Avatar" class="channel-avatar">
+              <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Avatar" class="channel-avatar">
               <div class="channel-name-area">Comatozze <span class="blue-tick">✓</span></div>
             </div>
           </div>
@@ -499,9 +497,9 @@
   <!-- Sophie Kanal Sayfası -->
   <div class="container hidden" id="channelSophieView">
     <div class="channel-profile-header">
-      <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" class="channel-banner-img">
+      <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" class="channel-banner-img" alt="Banner">
       <div class="channel-profile-info">
-        <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" class="channel-profile-avatar">
+        <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" class="channel-profile-avatar" alt="Avatar">
         <div class="channel-meta">
           <h1>Sophieraiin <span class="blue-tick">✓</span></h1>
           <p>Resmi içerik kanalı. Özel performanslar ve gösteriler.</p>
@@ -530,9 +528,9 @@
   <!-- Comatozze Kanal Sayfası -->
   <div class="container hidden" id="channelComatozzeView">
     <div class="channel-profile-header">
-      <img src="https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)(mh=n7tIeIoHniVFwhIe)200x200.jpg" class="channel-banner-img">
+      <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" class="channel-banner-img" alt="Banner">
       <div class="channel-profile-info">
-        <img src="https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)(mh=n7tIeIoHniVFwhIe)200x200.jpg" class="channel-profile-avatar">
+        <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" class="channel-profile-avatar" alt="Avatar">
         <div class="channel-meta">
           <h1>Comatozze <span class="blue-tick">✓</span></h1>
           <p>Özel hikaye ve dram odaklı içerik kanalı.</p>
@@ -540,16 +538,16 @@
       </div>
     </div>
     <div class="section-title">Kanalın Videoları</div>
-    <div class="video-card" onclick="openVideo('Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.', 'https://voe.sx/e/gbjcwhsp3z1a', '📅 16 Ekim 2026', 'Comatozze', 'https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)(mh=n7tIeIoHniVFwhIe)200x200.jpg')">
+    <div class="video-card" onclick="openVideo('Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.', 'https://voe.sx/e/gbjcwhsp3z1a', '📅 16 Ekim 2026', 'Comatozze', 'https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg')">
       <div class="thumbnail-box">
-        <img src="https://pix-cdn77.phncdn.com/c6541/videos/202610/25/66946915/original/01a17308-77b0-74a0-972b-6742480fa576.jpg/plain/rs:fit:480:270?hash=9TLrW3HOH5pSmPwysoWhrRRqg3U=&validto=1794061651" alt="Kapak">
+        <img src="https://i.postimg.cc/pTMp10rZ/2-(1).jpg" alt="Kapak">
       </div>
       <div class="video-details">
         <div class="video-info-left">
           <div class="video-title">Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.</div>
           <div class="video-date">📅 16 Ekim 2026</div>
           <div class="channel-row">
-            <img src="https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)(mh=n7tIeIoHniVFwhIe)200x200.jpg" alt="Avatar" class="channel-avatar">
+            <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Avatar" class="channel-avatar">
             <div class="channel-name-area">Comatozze <span class="blue-tick">✓</span></div>
           </div>
         </div>
@@ -564,8 +562,8 @@
       <!-- Reklam Katmanı -->
       <div class="ad-overlay" id="adOverlay">
         <video id="adVideo" src="reklam.mp4" playsinline></video>
-        <button class="ad-fullscreen-btn" onclick="toggleAdFullscreen()">⛶ Tam Ekran</button>
-        <button class="skip-ad-btn disabled" id="skipAdBtn">Reklamı Geç (5)</button>
+        <button class="ad-fullscreen-btn" onclick="toggleAdFullscreen()" type="button">⛶ Tam Ekran</button>
+        <button class="skip-ad-btn disabled" id="skipAdBtn" type="button">Reklamı Geç (5)</button>
       </div>
 
       <!-- Asıl Video -->
@@ -575,7 +573,7 @@
     <div class="video-title" id="playingVideoTitle" style="font-size: 18px;"></div>
     <div class="video-date" id="playingVideoDate"></div>
     <div class="channel-row" id="playingChannelRow" style="border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-bottom: 20px;">
-      <img id="playingChannelAvatar" src="" class="channel-avatar">
+      <img id="playingChannelAvatar" src="" class="channel-avatar" alt="Avatar">
       <div class="channel-name-area"><span id="playingChannelName"></span> <span class="blue-tick">✓</span></div>
     </div>
   </div>
@@ -587,7 +585,8 @@
     const themeToggle = document.getElementById('themeToggle');
     const body = document.body;
 
-    menuToggle.addEventListener('click', () => {
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
       sidebar.classList.toggle('active');
       overlay.classList.toggle('active');
     });
@@ -669,4 +668,22 @@
     function showChannelComatozze() {
       hideAllViews();
       document.getElementById('channelComatozzeView').classList.remove('hidden');
-      do
+      document.getElementById('videoIframe').src = '';
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+      window.scrollTo(0, 0);
+    }
+
+    function toggleAdFullscreen() {
+      const adVideo = document.getElementById('adVideo');
+      if (adVideo.requestFullscreen) {
+        adVideo.requestFullscreen();
+      } else if (adVideo.webkitRequestFullscreen) {
+        adVideo.webkitRequestFullscreen();
+      }
+    }
+
+    let countdownInterval;
+
+    function openVideo(title, embedUrl, dateStr, channelName, channelAvatar) {
+      hideAl
