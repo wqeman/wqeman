@@ -54,12 +54,44 @@
       top: 0;
       z-index: 100;
       border-bottom: 1px solid var(--border-color);
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
     .header-left, .header-right {
       display: flex;
       align-items: center;
       gap: 12px;
+    }
+
+    /* Arama Çubuğu */
+    .search-container {
+      flex: 1;
+      max-width: 350px;
+      display: flex;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 8px 12px;
+      border-radius: 20px 0 0 20px;
+      border: 1px solid var(--border-color);
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      outline: none;
+      font-size: 14px;
+    }
+
+    .search-btn {
+      padding: 8px 16px;
+      border-radius: 0 20px 20px 0;
+      border: 1px solid var(--border-color);
+      border-left: none;
+      background-color: var(--btn-bg);
+      color: var(--btn-text);
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
     }
 
     .menu-btn, .icon-btn {
@@ -239,21 +271,34 @@
 
     .video-details {
       padding: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    .video-info-left {
+      flex: 1;
     }
 
     .video-title {
       font-size: 16px;
       font-weight: bold;
       color: var(--text-color);
-      margin-bottom: 12px;
+      margin-bottom: 6px;
       line-height: 1.4;
+    }
+
+    .video-date {
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 10px;
     }
 
     .channel-row {
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 14px;
       cursor: pointer;
     }
 
@@ -287,13 +332,15 @@
 
     .action-btn {
       display: inline-block;
-      width: 100%;
-      padding: 10px;
+      padding: 8px 16px;
       background-color: var(--btn-bg);
       color: var(--btn-text);
       text-align: center;
-      border-radius: 6px;
+      text-decoration: none;
+      border-radius: 12px;
       font-weight: bold;
+      font-size: 13px;
+      white-space: nowrap;
     }
 
     /* Oynatıcı & Reklam Katmanı */
@@ -374,6 +421,13 @@
       <button class="menu-btn" id="menuToggle">☰</button>
       <span class="logo" onclick="showHome()">WQEMAN🙈</span>
     </div>
+
+    <!-- Arama Motoru -->
+    <div class="search-container">
+      <input type="text" id="searchInput" class="search-input" placeholder="Video, kanal veya kategori ara..." onkeyup="filterVideos()">
+      <button class="search-btn" onclick="filterVideos()">🔍</button>
+    </div>
+
     <div class="header-right">
       <button class="icon-btn" id="themeToggle" title="Tema Değiştir">🌓</button>
     </div>
@@ -388,8 +442,9 @@
     <ul class="menu-list">
       <li><a onclick="showHome()">🏠 Başlangıç Sayfası</a></li>
       <li><a onclick="showChannelSophie()">✨ Sophieraiin Kanalı</a></li>
-      <li><a onclick="showHome()">🎬 Full HD Videolar</a></li>
-      <li><a onclick="showHome()">🔥 Popüler İçerikler</a></li>
+      <li><a onclick="showChannelComatozze()">🔥 Comatozze Kanalı</a></li>
+      <li><a onclick="filterByCategory('Üvey Aile')">💡 Kategori: Üvey Aile / Dram</a></li>
+      <li><a onclick="filterByCategory('Özel')">🎬 Kategori: Özel Gösteriler</a></li>
     </ul>
   </div>
 
@@ -399,24 +454,48 @@
   <div class="container" id="homeView">
     <div class="section-title">ÖNE ÇIKAN VİDEOLAR</div>
     <div id="videoList">
-      <div class="video-card" onclick="openVideo('Sophie Rain Krem Şanti İle Şov Yapıyor', 'https://voe.sx/e/vdkex5vzitjh')">
+      
+      <!-- Comatozze Videosu -->
+      <div class="video-card" data-category="Üvey Aile" onclick="openVideo('Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.', 'https://voe.sx/e/gbjcwhsp3z1a', '📅 16 Ekim 2026', 'Comatozze', 'https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)')">
         <div class="thumbnail-box">
           <img src="https://i.postimg.cc/pTMp10rZ/2-(1).jpg" alt="Kapak">
         </div>
         <div class="video-details">
-          <div class="video-title">Sophie Rain Krem Şanti İle Şov Yapıyor</div>
-          <div class="channel-row" onclick="event.stopPropagation(); showChannelSophie();">
-            <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Avatar" class="channel-avatar">
-            <div class="channel-name-area">Sophieraiin <span class="blue-tick">✓</span></div>
+          <div class="video-info-left">
+            <div class="video-title">Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.</div>
+            <div class="video-date">📅 16 Ekim 2026 | Kategori: Üvey Aile</div>
+            <div class="channel-row" onclick="event.stopPropagation(); showChannelComatozze();">
+              <img src="https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)" alt="Avatar" class="channel-avatar">
+              <div class="channel-name-area">Comatozze <span class="blue-tick">✓</span></div>
+            </div>
           </div>
-          <span class="action-btn">Hemen İzle 🚀</span>
+          <span class="action-btn">İzle 🚀</span>
         </div>
       </div>
+
+      <!-- Sophieraiin Videosu -->
+      <div class="video-card" data-category="Özel" onclick="openVideo('Sophie Rain Krem Şanti İle Şov Yapıyor', 'https://vo.sx/e/vdkex5vzitjh', '📅 15 Ekim 2026', 'Sophieraiin', 'https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg')">
+        <div class="thumbnail-box">
+          <img src="https://i.postimg.cc/pTMp10rZ/2-(1).jpg" alt="Kapak">
+        </div>
+        <div class="video-details">
+          <div class="video-info-left">
+            <div class="video-title">Sophie Rain Krem Şanti İle Şov Yapıyor</div>
+            <div class="video-date">📅 15 Ekim 2026 | Kategori: Özel</div>
+            <div class="channel-row" onclick="event.stopPropagation(); showChannelSophie();">
+              <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Avatar" class="channel-avatar">
+              <div class="channel-name-area">Sophieraiin <span class="blue-tick">✓</span></div>
+            </div>
+          </div>
+          <span class="action-btn">İzle 🚀</span>
+        </div>
+      </div>
+
     </div>
   </div>
 
-  <!-- Kanal Sayfası -->
-  <div class="container hidden" id="channelView">
+  <!-- Sophie Kanal Sayfası -->
+  <div class="container hidden" id="channelSophieView">
     <div class="channel-profile-header">
       <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" class="channel-banner-img">
       <div class="channel-profile-info">
@@ -428,17 +507,51 @@
       </div>
     </div>
     <div class="section-title">Kanalın Videoları</div>
-    <div class="video-card" onclick="openVideo('Sophie Rain Krem Şanti İle Şov Yapıyor', 'https://voe.sx/e/vdkex5vzitjh')">
+    <div class="video-card" onclick="openVideo('Sophie Rain Krem Şanti İle Şov Yapıyor', 'https://vo.sx/e/vdkex5vzitjh', '📅 15 Ekim 2026', 'Sophieraiin', 'https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg')">
       <div class="thumbnail-box">
         <img src="https://i.postimg.cc/pTMp10rZ/2-(1).jpg" alt="Kapak">
       </div>
       <div class="video-details">
-        <div class="video-title">Sophie Rain Krem Şanti İle Şov Yapıyor</div>
-        <div class="channel-row">
-          <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" class="channel-avatar">
-          <div class="channel-name-area">Sophieraiin <span class="blue-tick">✓</span></div>
+        <div class="video-info-left">
+          <div class="video-title">Sophie Rain Krem Şanti İle Şov Yapıyor</div>
+          <div class="video-date">📅 15 Ekim 2026</div>
+          <div class="channel-row">
+            <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" class="channel-avatar">
+            <div class="channel-name-area">Sophieraiin <span class="blue-tick">✓</span></div>
+          </div>
         </div>
-        <span class="action-btn">Hemen İzle 🚀</span>
+        <span class="action-btn">İzle 🚀</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comatozze Kanal Sayfası -->
+  <div class="container hidden" id="channelComatozzeView">
+    <div class="channel-profile-header">
+      <img src="https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)" class="channel-banner-img">
+      <div class="channel-profile-info">
+        <img src="https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)" class="channel-profile-avatar">
+        <div class="channel-meta">
+          <h1>Comatozze <span class="blue-tick">✓</span></h1>
+          <p>Özel hikaye ve dram odaklı içerik kanalı.</p>
+        </div>
+      </div>
+    </div>
+    <div class="section-title">Kanalın Videoları</div>
+    <div class="video-card" onclick="openVideo('Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.', 'https://voe.sx/e/gbjcwhsp3z1a', '📅 16 Ekim 2026', 'Comatozze', 'https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)')">
+      <div class="thumbnail-box">
+        <img src="https://i.postimg.cc/pTMp10rZ/2-(1).jpg" alt="Kapak">
+      </div>
+      <div class="video-details">
+        <div class="video-info-left">
+          <div class="video-title">Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.</div>
+          <div class="video-date">📅 16 Ekim 2026</div>
+          <div class="channel-row">
+            <img src="https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)" class="channel-avatar">
+            <div class="channel-name-area">Comatozze <span class="blue-tick">✓</span></div>
+          </div>
+        </div>
+        <span class="action-btn">İzle 🚀</span>
       </div>
     </div>
   </div>
@@ -454,13 +567,14 @@
       </div>
 
       <!-- Asıl Video -->
-      <iframe id="videoIframe" src="" allowfullscreen></iframe>
+      <iframe id="videoIframe" src="" allowfullscreen style="width:100%; height:100%; border:0;"></iframe>
     </div>
 
     <div class="video-title" id="playingVideoTitle" style="font-size: 18px;"></div>
-    <div class="channel-row" onclick="showChannelSophie();" style="border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-bottom: 20px;">
-      <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" class="channel-avatar">
-      <div class="channel-name-area">Sophieraiin <span class="blue-tick">✓</span></div>
+    <div class="video-date" id="playingVideoDate"></div>
+    <div class="channel-row" id="playingChannelRow" style="border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-bottom: 20px;">
+      <img id="playingChannelAvatar" src="" class="channel-avatar">
+      <div class="channel-name-area"><span id="playingChannelName"></span> <span class="blue-tick">✓</span></div>
     </div>
   </div>
 
@@ -489,9 +603,47 @@
       }
     });
 
+    // Arama Fonksiyonu
+    function filterVideos() {
+      let input = document.getElementById('searchInput').value.toLowerCase();
+      let cards = document.querySelectorAll('#videoList .video-card');
+
+      showHome(); 
+
+      cards.forEach(card => {
+        let title = card.querySelector('.video-title').innerText.toLowerCase();
+        let channel = card.querySelector('.channel-name-area').innerText.toLowerCase();
+        let category = card.getAttribute('data-category').toLowerCase();
+
+        if (title.includes(input) || channel.includes(input) || category.includes(input)) {
+          card.style.display = "";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+
+    // Kategoriye Göre Filtreleme
+    function filterByCategory(catName) {
+      let cards = document.querySelectorAll('#videoList .video-card');
+      showHome();
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+
+      cards.forEach(card => {
+        let category = card.getAttribute('data-category');
+        if (category === catName) {
+          card.style.display = "";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+
     function hideAllViews() {
       document.getElementById('homeView').classList.add('hidden');
-      document.getElementById('channelView').classList.add('hidden');
+      document.getElementById('channelSophieView').classList.add('hidden');
+      document.getElementById('channelComatozzeView').classList.add('hidden');
       document.getElementById('videoView').classList.add('hidden');
     }
 
@@ -505,7 +657,17 @@
 
     function showChannelSophie() {
       hideAllViews();
-      document.getElementById('channelView').classList.remove('hidden');
+      document.getElementById('channelSophieView').classList.remove('hidden');
+      document.getElementById('videoIframe').src = '';
+      sidebar.classList.remove('active');
+      overlay.classList.remove('active');
+      window.scrollTo(0, 0);
+    }
+
+    function showChannelComatozze() {
+      hideAllViews();
+      document.getElementById('channelComatozzeView').classList.add('hidden'); // Düzeltme
+      document.getElementById('channelComatozzeView').classList.remove('hidden');
       document.getElementById('videoIframe').src = '';
       sidebar.classList.remove('active');
       overlay.classList.remove('active');
@@ -523,62 +685,4 @@
 
     let countdownInterval;
 
-    function openVideo(title, embedUrl) {
-      hideAllViews();
-      document.getElementById('videoView').classList.remove('hidden');
-      document.getElementById('playingVideoTitle').innerText = title;
-      document.getElementById('videoIframe').src = embedUrl;
-      window.scrollTo(0, 0);
-
-      const adOverlay = document.getElementById('adOverlay');
-      const adVideo = document.getElementById('adVideo');
-      const skipAdBtn = document.getElementById('skipAdBtn');
-      
-      adOverlay.classList.remove('hidden');
-      adVideo.currentTime = 0;
-      adVideo.muted = false;
-
-      const playPromise = adVideo.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          adVideo.muted = true;
-          adVideo.play();
-        });
-      }
-
-      clearInterval(countdownInterval);
-
-      let skipTimer = 5;  // 5 saniye bekleme süresi
-      let totalTimer = 9; // Toplam 9 saniyelik reklam süresi
-
-      skipAdBtn.innerText = `Reklamı Geç (${skipTimer})`;
-      skipAdBtn.classList.add('disabled');
-      skipAdBtn.onclick = null;
-
-      countdownInterval = setInterval(() => {
-        skipTimer--;
-        totalTimer--;
-
-        if (skipTimer > 0) {
-          skipAdBtn.innerText = `Reklamı Geç (${skipTimer})`;
-        } else if (skipTimer === 0) {
-          skipAdBtn.innerText = 'Reklamı Geç ⏩';
-          skipAdBtn.classList.remove('disabled');
-          skipAdBtn.onclick = () => {
-            clearInterval(countdownInterval);
-            adVideo.pause();
-            adOverlay.classList.add('hidden');
-          };
-        }
-
-        if (totalTimer <= 0) {
-          clearInterval(countdownInterval);
-          adVideo.pause();
-          adOverlay.classList.add('hidden');
-        }
-      }, 1000);
-    }
-  </script>
-
-</body>
-</html>
+    function openVideo(title, embedUrl, dateStr, channelName,
