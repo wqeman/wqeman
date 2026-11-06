@@ -52,7 +52,7 @@
       padding: 12px 16px;
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
       border-bottom: 1px solid var(--border-color);
       gap: 10px;
       flex-wrap: wrap;
@@ -62,12 +62,16 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      position: relative;
+      z-index: 1001;
     }
 
     .search-container {
       flex: 1;
       max-width: 350px;
       display: flex;
+      position: relative;
+      z-index: 1001;
     }
 
     .search-input {
@@ -99,7 +103,7 @@
       color: var(--text-color);
       font-size: 20px;
       cursor: pointer;
-      z-index: 300;
+      padding: 4px;
     }
 
     .logo {
@@ -117,7 +121,7 @@
       height: 100%;
       background-color: var(--sidebar-bg);
       color: var(--sidebar-text);
-      z-index: 250;
+      z-index: 9999;
       transition: left 0.3s ease;
       overflow-y: auto;
       border-right: 1px solid var(--border-color);
@@ -176,7 +180,7 @@
       width: 100%;
       height: 100%;
       background: rgba(0, 0, 0, 0.7);
-      z-index: 200;
+      z-index: 5000;
       display: none;
       pointer-events: none;
     }
@@ -190,6 +194,8 @@
       max-width: 800px;
       margin: 0 auto;
       padding: 12px;
+      position: relative;
+      z-index: 1;
     }
 
     .section-title {
@@ -254,7 +260,6 @@
       border: 1px solid var(--border-color);
       cursor: pointer;
       position: relative;
-      z-index: 1;
     }
 
     .thumbnail-box {
@@ -345,8 +350,6 @@
       font-weight: bold;
       font-size: 13px;
       white-space: nowrap;
-      position: relative;
-      z-index: 2;
     }
 
     .player-wrapper {
@@ -424,13 +427,13 @@
   <header>
     <div class="header-left">
       <button class="menu-btn" id="menuToggle" type="button">☰</button>
-      <span class="logo" onclick="showHome()">WQEMAN🙈</span>
+      <span class="logo" id="logoBtn">WQEMAN🙈</span>
     </div>
 
     <!-- Arama Motoru -->
     <div class="search-container">
-      <input type="text" id="searchInput" class="search-input" placeholder="Video, kanal veya kategori ara..." onkeyup="filterVideos()">
-      <button class="search-btn" onclick="filterVideos()" type="button">🔍</button>
+      <input type="text" id="searchInput" class="search-input" placeholder="Video, kanal veya kategori ara...">
+      <button class="search-btn" id="searchBtn" type="button">🔍</button>
     </div>
 
     <div class="header-right">
@@ -445,11 +448,11 @@
       <p>WQEMAN.com</p>
     </div>
     <ul class="menu-list">
-      <li><a onclick="showHome()">🏠 Başlangıç Sayfası</a></li>
-      <li><a onclick="showChannelSophie()">✨ Sophieraiin Kanalı</a></li>
-      <li><a onclick="showChannelComatozze()">🔥 Comatozze Kanalı</a></li>
-      <li><a onclick="filterByCategory('Üvey Aile')">💡 Kategori: Üvey Aile / Dram</a></li>
-      <li><a onclick="filterByCategory('Özel')">🎬 Kategori: Özel Gösteriler</a></li>
+      <li><a id="navHome">🏠 Başlangıç Sayfası</a></li>
+      <li><a id="navSophie">✨ Sophieraiin Kanalı</a></li>
+      <li><a id="navComatozze">🔥 Comatozze Kanalı</a></li>
+      <li><a id="navCatStep">💡 Kategori: Üvey Aile / Dram</a></li>
+      <li><a id="navCatSpecial">🎬 Kategori: Özel Gösteriler</a></li>
     </ul>
   </div>
 
@@ -460,10 +463,9 @@
     <div class="section-title">ÖNE ÇIKAN VİDEOLAR</div>
     <div id="videoList">
       
-      <!-- Üstteki Video (Comatozze - 6 Kasım 2026) -->
+      <!-- Comatozze Videosu (6 Kasım 2026) -->
       <div class="video-card" data-category="Üvey Aile" onclick="openVideo('Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.', 'https://voe.sx/e/gbjcwhsp3z1a', '📅 6 Kasım 2026', 'Comatozze', 'https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)(mh=n7tIeIoHniVFwhIe)200x200.jpg')">
         <div class="thumbnail-box">
-          <!-- Comatozze Kapak Resmi -->
           <img src="https://pix-cdn77.phncdn.com/c6541/videos/202610/25/66946915/original/01a17308-77b0-74a0-972b-6742480fa576.jpg/plain/rs:fit:480:270?hash=9TLrW3HOH5pSmPwysoWhrRRqg3U=&validto=1794061651" alt="Comatozze Kapak">
         </div>
         <div class="video-details">
@@ -479,7 +481,7 @@
         </div>
       </div>
 
-      <!-- Alttaki Video (Sophieraiin - 5 Kasım 2026) -->
+      <!-- Sophieraiin Videosu (5 Kasım 2026) -->
       <div class="video-card" data-category="Özel" onclick="openVideo('Sophie Rain Krem Şanti İle Şov Yapıyor', 'https://voe.sx/e/vdkex5vzitjh', '📅 5 Kasım 2026', 'Sophieraiin', 'https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg')">
         <div class="thumbnail-box">
           <img src="https://i.postimg.cc/pTMp10rZ/2-(1).jpg" alt="Sophie Kapak">
@@ -568,7 +570,7 @@
       <!-- Reklam Katmanı -->
       <div class="ad-overlay" id="adOverlay">
         <video id="adVideo" src="reklam.mp4" playsinline></video>
-        <button class="ad-fullscreen-btn" onclick="toggleAdFullscreen()" type="button">⛶ Tam Ekran</button>
+        <button class="ad-fullscreen-btn" id="adFullscreenBtn" type="button">⛶ Tam Ekran</button>
         <button class="skip-ad-btn disabled" id="skipAdBtn" type="button">Reklamı Geç (5)</button>
       </div>
 
@@ -589,18 +591,24 @@
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
     const themeToggle = document.getElementById('themeToggle');
+    const logoBtn = document.getElementById('logoBtn');
+    const searchBtn = document.getElementById('searchBtn');
+    const searchInput = document.getElementById('searchInput');
     const body = document.body;
 
-    menuToggle.addEventListener('click', (e) => {
-      e.stopPropagation();
+    function toggleMenu() {
       sidebar.classList.toggle('active');
       overlay.classList.toggle('active');
-    });
+    }
 
-    overlay.addEventListener('click', () => {
+    function closeMenu() {
       sidebar.classList.remove('active');
       overlay.classList.remove('active');
-    });
+    }
+
+    menuToggle.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', closeMenu);
+    logoBtn.addEventListener('click', showHome);
 
     themeToggle.addEventListener('click', () => {
       if (body.getAttribute('data-theme') === 'dark') {
@@ -610,9 +618,17 @@
       }
     });
 
-    // Arama Fonksiyonu
+    document.getElementById('navHome').addEventListener('click', showHome);
+    document.getElementById('navSophie').addEventListener('click', showChannelSophie);
+    document.getElementById('navComatozze').addEventListener('click', showChannelComatozze);
+    document.getElementById('navCatStep').addEventListener('click', () => filterByCategory('Üvey Aile'));
+    document.getElementById('navCatSpecial').addEventListener('click', () => filterByCategory('Özel'));
+
+    searchBtn.addEventListener('click', filterVideos);
+    searchInput.addEventListener('keyup', filterVideos);
+
     function filterVideos() {
-      let input = document.getElementById('searchInput').value.toLowerCase();
+      let input = searchInput.value.toLowerCase();
       let cards = document.querySelectorAll('#videoList .video-card');
 
       showHome(); 
@@ -630,12 +646,10 @@
       });
     }
 
-    // Kategoriye Göre Filtreleme
     function filterByCategory(catName) {
       let cards = document.querySelectorAll('#videoList .video-card');
       showHome();
-      sidebar.classList.remove('active');
-      overlay.classList.remove('active');
+      closeMenu();
 
       cards.forEach(card => {
         let category = card.getAttribute('data-category');
@@ -651,20 +665,4 @@
       document.getElementById('homeView').classList.add('hidden');
       document.getElementById('channelSophieView').classList.add('hidden');
       document.getElementById('channelComatozzeView').classList.add('hidden');
-      document.getElementById('videoView').classList.add('hidden');
-    }
-
-    function showHome() {
-      hideAllViews();
-      document.getElementById('homeView').classList.remove('hidden');
-      document.getElementById('videoIframe').src = '';
-      sidebar.classList.remove('active');
-      overlay.classList.remove('active');
-    }
-
-    function showChannelSophie() {
-      hideAllViews();
-      document.getElementById('channelSophieView').classList.remove('hidden');
-      document.getElementById('videoIframe').src = '';
-      sidebar.classList.remove('active');
-      overlay.classList.remove(
+      document.getEl
