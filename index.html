@@ -443,10 +443,11 @@
     </div>
     <ul class="menu-list">
       <li><a onclick="showHome(); closeMenu();">🏠 Başlangıç Sayfası</a></li>
+      <li><a onclick="showChannelComatozze(); closeMenu();">🔥 Comatozze Kanalı</a></li>
       <li><a onclick="showChannelAishah(); closeMenu();">💎 Aishah Sofey Kanalı</a></li>
       <li><a onclick="showChannelSweetie(); closeMenu();">🦊 Sweetie Fox Kanalı</a></li>
-      <li><a onclick="showChannelComatozze(); closeMenu();">🔥 Comatozze Kanalı</a></li>
       <li><a onclick="showChannelSophie(); closeMenu();">✨ Sophieraiin Kanalı</a></li>
+      <li><a onclick="filterByCategory('Kanepede');">💡 Kategori: Kanepede / Romantik</a></li>
       <li><a onclick="filterByCategory('Gösteri');">💡 Kategori: Gösteri / Fizik</a></li>
       <li><a onclick="filterByCategory('Köylü');">💡 Kategori: Özel / Köylü</a></li>
       <li><a onclick="filterByCategory('Üvey Aile');">💡 Kategori: Üvey Aile / Dram</a></li>
@@ -460,7 +461,43 @@
     <div class="section-title">ÖNE ÇIKAN VİDEOLAR</div>
     <div id="videoList">
       
-      <!-- Aishah Sofey Videosu (Yeni Eklenen) -->
+      <!-- Comatozze Yeni Video -->
+      <div class="video-card" data-category="Kanepede" onclick="openVideo('Sıcak Çift Kanepede Tutkulu Bir Şekilde Seks Yapıyor', 'https://voe.sx/e/kmnwp6pf63nc', '📅 7 Kasım 2026', 'Comatozze', 'https://pornoanne.com/wp-content/uploads/2026/09/6a9d729c7b598.jpg')">
+        <div class="thumbnail-box">
+          <img src="https://pornoanne.com/wp-content/uploads/2026/09/6a9d729c7b598.jpg" alt="Comatozze Kapak">
+        </div>
+        <div class="video-details">
+          <div class="video-info-left">
+            <div class="video-title">Sıcak Çift Kanepede Tutkulu Bir Şekilde Seks Yapıyor</div>
+            <div class="video-date">📅 7 Kasım 2026 | Kategori: Kanepede</div>
+            <div class="channel-row" onclick="event.stopPropagation(); showChannelComatozze();">
+              <img src="https://pornoanne.com/wp-content/uploads/2026/09/6a9d729c7b598.jpg" alt="Avatar" class="channel-avatar">
+              <div class="channel-name-area">Comatozze <span class="blue-tick">✓</span></div>
+            </div>
+          </div>
+          <span class="action-btn">İzle 🚀</span>
+        </div>
+      </div>
+
+      <!-- Sophie Rain Yeni Video -->
+      <div class="video-card" data-category="Özel" onclick="openVideo('Sophie Rain Seksi Siyah Renk Kıyafetiyle Soyunuyor', 'https://voe.sx/e/g3beul38mpw7', '📅 7 Kasım 2026', 'Sophieraiin', 'https://www.porn4fans.com/contents/videos_screenshots/5000/5268/800x450/1.jpg')">
+        <div class="thumbnail-box">
+          <img src="https://www.porn4fans.com/contents/videos_screenshots/5000/5268/800x450/1.jpg" alt="Sophie Rain Kapak">
+        </div>
+        <div class="video-details">
+          <div class="video-info-left">
+            <div class="video-title">Sophie Rain Seksi Siyah Renk Kıyafetiyle Soyunuyor</div>
+            <div class="video-date">📅 7 Kasım 2026 | Kategori: Özel</div>
+            <div class="channel-row" onclick="event.stopPropagation(); showChannelSophie();">
+              <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Avatar" class="channel-avatar">
+              <div class="channel-name-area">Sophieraiin <span class="blue-tick">✓</span></div>
+            </div>
+          </div>
+          <span class="action-btn">İzle 🚀</span>
+        </div>
+      </div>
+
+      <!-- Aishah Sofey Videosu -->
       <div class="video-card" data-category="Gösteri" onclick="openVideo('Aishah Sofey Seksi Fiziğiyle Göz Kamaştırıyor', 'https://voe.sx/e/jfpwsptrfcor', '📅 7 Kasım 2026', 'Aishah Sofey', 'https://pimpbunny.com/contents/videos_screenshots/608000/608532/800x450/1.jpg')">
         <div class="thumbnail-box">
           <img src="https://pimpbunny.com/contents/videos_screenshots/608000/608532/800x450/1.jpg" alt="Aishah Sofey Kapak">
@@ -496,7 +533,7 @@
         </div>
       </div>
 
-      <!-- Comatozze Videosu -->
+      <!-- Comatozze Önceki Video -->
       <div class="video-card" data-category="Üvey Aile" onclick="openVideo('Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.', 'https://voe.sx/e/gbjcwhsp3z1a', '📅 6 Kasım 2026', 'Comatozze', 'https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)(mh=n7tIeIoHniVFwhIe)200x200.jpg')">
         <div class="thumbnail-box">
           <img src="https://pix-cdn77.phncdn.com/c6541/videos/202610/25/66946915/original/01a17308-77b0-74a0-972b-6742480fa576.jpg/plain/rs:fit:480:270?hash=9TLrW3HOH5pSmPwysoWhrRRqg3U=&validto=1794061651" alt="Comatozze Kapak">
@@ -514,24 +551,57 @@
         </div>
       </div>
 
-      <!-- Sophieraiin Videosu -->
-      <div class="video-card" data-category="Özel" onclick="openVideo('Sophie Rain Krem Şanti İle Şov Yapıyor', 'https://voe.sx/e/vdkex5vzitjh', '📅 5 Kasım 2026', 'Sophieraiin', 'https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg')">
-        <div class="thumbnail-box">
-          <img src="https://i.postimg.cc/pTMp10rZ/2-(1).jpg" alt="Sophie Kapak">
-        </div>
-        <div class="video-details">
-          <div class="video-info-left">
-            <div class="video-title">Sophie Rain Krem Şanti İle Şov Yapıyor</div>
-            <div class="video-date">📅 5 Kasım 2026 | Kategori: Özel</div>
-            <div class="channel-row" onclick="event.stopPropagation(); showChannelSophie();">
-              <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Avatar" class="channel-avatar">
-              <div class="channel-name-area">Sophieraiin <span class="blue-tick">✓</span></div>
-            </div>
-          </div>
-          <span class="action-btn">İzle 🚀</span>
+    </div>
+  </div>
+
+  <!-- Comatozze Kanal Sayfası -->
+  <div class="container page-view" id="channelComatozzeView">
+    <div class="channel-profile-header">
+      <img src="https://pornoanne.com/wp-content/uploads/2026/09/6a9d729c7b598.jpg" class="channel-banner-img">
+      <div class="channel-profile-info">
+        <img src="https://pornoanne.com/wp-content/uploads/2026/09/6a9d729c7b598.jpg" class="channel-profile-avatar">
+        <div class="channel-meta">
+          <h1>Comatozze <span class="blue-tick">✓</span></h1>
+          <p>Özel hikaye ve dram odaklı içerik kanalı.</p>
         </div>
       </div>
+    </div>
+    <div class="section-title">Kanalın Videoları</div>
+    
+    <!-- Comatozze Yeni Video -->
+    <div class="video-card" onclick="openVideo('Sıcak Çift Kanepede Tutkulu Bir Şekilde Seks Yapıyor', 'https://voe.sx/e/kmnwp6pf63nc', '📅 7 Kasım 2026', 'Comatozze', 'https://pornoanne.com/wp-content/uploads/2026/09/6a9d729c7b598.jpg')">
+      <div class="thumbnail-box">
+        <img src="https://pornoanne.com/wp-content/uploads/2026/09/6a9d729c7b598.jpg" alt="Kapak">
+      </div>
+      <div class="video-details">
+        <div class="video-info-left">
+          <div class="video-title">Sıcak Çift Kanepede Tutkulu Bir Şekilde Seks Yapıyor</div>
+          <div class="video-date">📅 7 Kasım 2026</div>
+          <div class="channel-row">
+            <img src="https://pornoanne.com/wp-content/uploads/2026/09/6a9d729c7b598.jpg" alt="Avatar" class="channel-avatar">
+            <div class="channel-name-area">Comatozze <span class="blue-tick">✓</span></div>
+          </div>
+        </div>
+        <span class="action-btn">İzle 🚀</span>
+      </div>
+    </div>
 
+    <!-- Comatozze Önceki Video -->
+    <div class="video-card" onclick="openVideo('Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.', 'https://voe.sx/e/gbjcwhsp3z1a', '📅 6 Kasım 2026', 'Comatozze', 'https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)(mh=n7tIeIoHniVFwhIe)200x200.jpg')">
+      <div class="thumbnail-box">
+        <img src="https://pix-cdn77.phncdn.com/c6541/videos/202610/25/66946915/original/01a17308-77b0-74a0-972b-6742480fa576.jpg/plain/rs:fit:480:270?hash=9TLrW3HOH5pSmPwysoWhrRRqg3U=&validto=1794061651" alt="Kapak">
+      </div>
+      <div class="video-details">
+        <div class="video-info-left">
+          <div class="video-title">Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.</div>
+          <div class="video-date">📅 6 Kasım 2026</div>
+          <div class="channel-row">
+            <img src="https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)(mh=n7tIeIoHniVFwhIe)200x200.jpg" alt="Avatar" class="channel-avatar">
+            <div class="channel-name-area">Comatozze <span class="blue-tick">✓</span></div>
+          </div>
+        </div>
+        <span class="action-btn">İzle 🚀</span>
+      </div>
     </div>
   </div>
 
@@ -548,87 +618,4 @@
       </div>
     </div>
     <div class="section-title">Kanalın Videoları</div>
-    <div class="video-card" onclick="openVideo('Aishah Sofey Seksi Fiziğiyle Göz Kamaştırıyor', 'https://voe.sx/e/jfpwsptrfcor', '📅 7 Kasım 2026', 'Aishah Sofey', 'https://pimpbunny.com/contents/videos_screenshots/608000/608532/800x450/1.jpg')">
-      <div class="thumbnail-box">
-        <img src="https://pimpbunny.com/contents/videos_screenshots/608000/608532/800x450/1.jpg" alt="Kapak">
-      </div>
-      <div class="video-details">
-        <div class="video-info-left">
-          <div class="video-title">Aishah Sofey Seksi Fiziğiyle Göz Kamaştırıyor</div>
-          <div class="video-date">📅 7 Kasım 2026</div>
-          <div class="channel-row">
-            <img src="https://pimpbunny.com/contents/videos_screenshots/608000/608532/800x450/1.jpg" alt="Avatar" class="channel-avatar">
-            <div class="channel-name-area">Aishah Sofey <span class="blue-tick">✓</span></div>
-          </div>
-        </div>
-        <span class="action-btn">İzle 🚀</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Sweetie Fox Kanal Sayfası -->
-  <div class="container page-view" id="channelSweetieView">
-    <div class="channel-profile-header">
-      <img src="https://t3.pixhost.to/thumbs/6399/783546656_162830.jpg" class="channel-banner-img">
-      <div class="channel-profile-info">
-        <img src="https://t3.pixhost.to/thumbs/6399/783546656_162830.jpg" class="channel-profile-avatar">
-        <div class="channel-meta">
-          <h1>Sweetie Fox <span class="blue-tick">✓</span></h1>
-          <p>Resmi Sweetie Fox içerik kanalı.</p>
-        </div>
-      </div>
-    </div>
-    <div class="section-title">Kanalın Videoları</div>
-    <div class="video-card" onclick="openVideo('Tüylü Vajinalı Köylü Kızı Bir Yabancı Tarafından Sikişildi - Sweetie Fox', 'https://voe.sx/e/hoshht3fdzl0', '📅 7 Kasım 2026', 'Sweetie Fox', 'https://t3.pixhost.to/thumbs/6399/783546656_162830.jpg')">
-      <div class="thumbnail-box">
-        <img src="https://t3.pixhost.to/thumbs/6399/783546656_162830.jpg" alt="Kapak">
-      </div>
-      <div class="video-details">
-        <div class="video-info-left">
-          <div class="video-title">Tüylü Vajinalı Köylü Kızı Bir Yabancı Tarafından Sikişildi - Sweetie Fox</div>
-          <div class="video-date">📅 7 Kasım 2026</div>
-          <div class="channel-row">
-            <img src="https://t3.pixhost.to/thumbs/6399/783546656_162830.jpg" alt="Avatar" class="channel-avatar">
-            <div class="channel-name-area">Sweetie Fox <span class="blue-tick">✓</span></div>
-          </div>
-        </div>
-        <span class="action-btn">İzle 🚀</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Sophie Kanal Sayfası -->
-  <div class="container page-view" id="channelSophieView">
-    <div class="channel-profile-header">
-      <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" class="channel-banner-img">
-      <div class="channel-profile-info">
-        <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" class="channel-profile-avatar">
-        <div class="channel-meta">
-          <h1>Sophieraiin <span class="blue-tick">✓</span></h1>
-          <p>Resmi içerik kanalı. Özel performanslar ve gösteriler.</p>
-        </div>
-      </div>
-    </div>
-    <div class="section-title">Kanalın Videoları</div>
-    <div class="video-card" onclick="openVideo('Sophie Rain Krem Şanti İle Şov Yapıyor', 'https://voe.sx/e/vdkex5vzitjh', '📅 5 Kasım 2026', 'Sophieraiin', 'https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg')">
-      <div class="thumbnail-box">
-        <img src="https://i.postimg.cc/pTMp10rZ/2-(1).jpg" alt="Kapak">
-      </div>
-      <div class="video-details">
-        <div class="video-info-left">
-          <div class="video-title">Sophie Rain Krem Şanti İle Şov Yapıyor</div>
-          <div class="video-date">📅 5 Kasım 2026</div>
-          <div class="channel-row">
-            <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Avatar" class="channel-avatar">
-            <div class="channel-name-area">Sophieraiin <span class="blue-tick">✓</span></div>
-          </div>
-        </div>
-        <span class="action-btn">İzle 🚀</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Comatozze Kanal Sayfası -->
-  <div class="container page-view" id="channelComatozzeView">
-    <div class="channel-profile-header">
-      <img src="https://ei.phncdn.com
+    <div class="video-card" onclick
