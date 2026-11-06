@@ -456,16 +456,16 @@
     <div id="videoList">
       
       <!-- Comatozze Videosu -->
-      <div class="video-card" data-category="Üvey Aile" onclick="openVideo('Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.', 'https://voe.sx/e/gbjcwhsp3z1a', '📅 16 Ekim 2026', 'Comatozze', 'https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)')">
+      <div class="video-card" data-category="Üvey Aile" onclick="openVideo('Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.', 'https://voe.sx/e/gbjcwhsp3z1a', '📅 16 Ekim 2026', 'Comatozze', 'https://i.postimg.cc/pTMp10rZ/2-(1).jpg')">
         <div class="thumbnail-box">
-          <img src="https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)" alt="Comatozze Kapak">
+          <img src="https://i.postimg.cc/pTMp10rZ/2-(1).jpg" alt="Comatozze Kapak">
         </div>
         <div class="video-details">
           <div class="video-info-left">
             <div class="video-title">Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.</div>
             <div class="video-date">📅 16 Ekim 2026 | Kategori: Üvey Aile</div>
             <div class="channel-row" onclick="event.stopPropagation(); showChannelComatozze();">
-              <img src="https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)" alt="Avatar" class="channel-avatar">
+              <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Avatar" class="channel-avatar">
               <div class="channel-name-area">Comatozze <span class="blue-tick">✓</span></div>
             </div>
           </div>
@@ -516,7 +516,7 @@
           <div class="video-title">Sophie Rain Krem Şanti İle Şov Yapıyor</div>
           <div class="video-date">📅 15 Ekim 2026</div>
           <div class="channel-row">
-            <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" class="channel-avatar">
+            <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Avatar" class="channel-avatar">
             <div class="channel-name-area">Sophieraiin <span class="blue-tick">✓</span></div>
           </div>
         </div>
@@ -528,9 +528,9 @@
   <!-- Comatozze Kanal Sayfası -->
   <div class="container hidden" id="channelComatozzeView">
     <div class="channel-profile-header">
-      <img src="https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)" class="channel-banner-img">
+      <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" class="channel-banner-img">
       <div class="channel-profile-info">
-        <img src="https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)" class="channel-profile-avatar">
+        <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" class="channel-profile-avatar">
         <div class="channel-meta">
           <h1>Comatozze <span class="blue-tick">✓</span></h1>
           <p>Özel hikaye ve dram odaklı içerik kanalı.</p>
@@ -538,16 +538,16 @@
       </div>
     </div>
     <div class="section-title">Kanalın Videoları</div>
-    <div class="video-card" onclick="openVideo('Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.', 'https://voe.sx/e/gbjcwhsp3z1a', '📅 16 Ekim 2026', 'Comatozze', 'https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)')">
+    <div class="video-card" onclick="openVideo('Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.', 'https://voe.sx/e/gbjcwhsp3z1a', '📅 16 Ekim 2026', 'Comatozze', 'https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg')">
       <div class="thumbnail-box">
-        <img src="https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)" alt="Kapak">
+        <img src="https://i.postimg.cc/pTMp10rZ/2-(1).jpg" alt="Kapak">
       </div>
       <div class="video-details">
         <div class="video-info-left">
           <div class="video-title">Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.</div>
           <div class="video-date">📅 16 Ekim 2026</div>
           <div class="channel-row">
-            <img src="https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)" class="channel-avatar">
+            <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Avatar" class="channel-avatar">
             <div class="channel-name-area">Comatozze <span class="blue-tick">✓</span></div>
           </div>
         </div>
@@ -684,4 +684,9 @@
 
     let countdownInterval;
 
-    function openVideo(title, embedUrl, dateStr,
+    function openVideo(title, embedUrl, dateStr, channelName, channelAvatar) {
+      hideAllViews();
+      document.getElementById('videoView').classList.remove('hidden');
+      document.getElementById('playingVideoTitle').innerText = title;
+      document.getElementById('playingVideoDate').innerText = dateStr;
+ 
