@@ -443,10 +443,13 @@
     </div>
     <ul class="menu-list">
       <li><a onclick="showHome(); closeMenu();">🏠 Başlangıç Sayfası</a></li>
-      <li><a onclick="showChannelSophie(); closeMenu();">✨ Sophieraiin Kanalı</a></li>
+      <li><a onclick="showChannelAishah(); closeMenu();">💎 Aishah Sofey Kanalı</a></li>
+      <li><a onclick="showChannelSweetie(); closeMenu();">🦊 Sweetie Fox Kanalı</a></li>
       <li><a onclick="showChannelComatozze(); closeMenu();">🔥 Comatozze Kanalı</a></li>
+      <li><a onclick="showChannelSophie(); closeMenu();">✨ Sophieraiin Kanalı</a></li>
+      <li><a onclick="filterByCategory('Gösteri');">💡 Kategori: Gösteri / Fizik</a></li>
+      <li><a onclick="filterByCategory('Köylü');">💡 Kategori: Özel / Köylü</a></li>
       <li><a onclick="filterByCategory('Üvey Aile');">💡 Kategori: Üvey Aile / Dram</a></li>
-      <li><a onclick="filterByCategory('Özel');">🎬 Kategori: Özel Gösteriler</a></li>
     </ul>
   </div>
 
@@ -457,7 +460,43 @@
     <div class="section-title">ÖNE ÇIKAN VİDEOLAR</div>
     <div id="videoList">
       
-      <!-- Comatozze Videosu (6 Kasım 2026) -->
+      <!-- Aishah Sofey Videosu (Yeni Eklenen) -->
+      <div class="video-card" data-category="Gösteri" onclick="openVideo('Aishah Sofey Seksi Fiziğiyle Göz Kamaştırıyor', 'https://voe.sx/e/jfpwsptrfcor', '📅 7 Kasım 2026', 'Aishah Sofey', 'https://pimpbunny.com/contents/videos_screenshots/608000/608532/800x450/1.jpg')">
+        <div class="thumbnail-box">
+          <img src="https://pimpbunny.com/contents/videos_screenshots/608000/608532/800x450/1.jpg" alt="Aishah Sofey Kapak">
+        </div>
+        <div class="video-details">
+          <div class="video-info-left">
+            <div class="video-title">Aishah Sofey Seksi Fiziğiyle Göz Kamaştırıyor</div>
+            <div class="video-date">📅 7 Kasım 2026 | Kategori: Gösteri</div>
+            <div class="channel-row" onclick="event.stopPropagation(); showChannelAishah();">
+              <img src="https://pimpbunny.com/contents/videos_screenshots/608000/608532/800x450/1.jpg" alt="Avatar" class="channel-avatar">
+              <div class="channel-name-area">Aishah Sofey <span class="blue-tick">✓</span></div>
+            </div>
+          </div>
+          <span class="action-btn">İzle 🚀</span>
+        </div>
+      </div>
+
+      <!-- Sweetie Fox Videosu -->
+      <div class="video-card" data-category="Köylü" onclick="openVideo('Tüylü Vajinalı Köylü Kızı Bir Yabancı Tarafından Sikişildi - Sweetie Fox', 'https://voe.sx/e/hoshht3fdzl0', '📅 7 Kasım 2026', 'Sweetie Fox', 'https://t3.pixhost.to/thumbs/6399/783546656_162830.jpg')">
+        <div class="thumbnail-box">
+          <img src="https://t3.pixhost.to/thumbs/6399/783546656_162830.jpg" alt="Sweetie Fox Kapak">
+        </div>
+        <div class="video-details">
+          <div class="video-info-left">
+            <div class="video-title">Tüylü Vajinalı Köylü Kızı Bir Yabancı Tarafından Sikişildi - Sweetie Fox</div>
+            <div class="video-date">📅 7 Kasım 2026 | Kategori: Köylü</div>
+            <div class="channel-row" onclick="event.stopPropagation(); showChannelSweetie();">
+              <img src="https://t3.pixhost.to/thumbs/6399/783546656_162830.jpg" alt="Avatar" class="channel-avatar">
+              <div class="channel-name-area">Sweetie Fox <span class="blue-tick">✓</span></div>
+            </div>
+          </div>
+          <span class="action-btn">İzle 🚀</span>
+        </div>
+      </div>
+
+      <!-- Comatozze Videosu -->
       <div class="video-card" data-category="Üvey Aile" onclick="openVideo('Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.', 'https://voe.sx/e/gbjcwhsp3z1a', '📅 6 Kasım 2026', 'Comatozze', 'https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)(mh=n7tIeIoHniVFwhIe)200x200.jpg')">
         <div class="thumbnail-box">
           <img src="https://pix-cdn77.phncdn.com/c6541/videos/202610/25/66946915/original/01a17308-77b0-74a0-972b-6742480fa576.jpg/plain/rs:fit:480:270?hash=9TLrW3HOH5pSmPwysoWhrRRqg3U=&validto=1794061651" alt="Comatozze Kapak">
@@ -475,7 +514,7 @@
         </div>
       </div>
 
-      <!-- Sophieraiin Videosu (5 Kasım 2026) -->
+      <!-- Sophieraiin Videosu -->
       <div class="video-card" data-category="Özel" onclick="openVideo('Sophie Rain Krem Şanti İle Şov Yapıyor', 'https://voe.sx/e/vdkex5vzitjh', '📅 5 Kasım 2026', 'Sophieraiin', 'https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg')">
         <div class="thumbnail-box">
           <img src="https://i.postimg.cc/pTMp10rZ/2-(1).jpg" alt="Sophie Kapak">
@@ -493,6 +532,68 @@
         </div>
       </div>
 
+    </div>
+  </div>
+
+  <!-- Aishah Sofey Kanal Sayfası -->
+  <div class="container page-view" id="channelAishahView">
+    <div class="channel-profile-header">
+      <img src="https://pimpbunny.com/contents/videos_screenshots/608000/608532/800x450/1.jpg" class="channel-banner-img">
+      <div class="channel-profile-info">
+        <img src="https://pimpbunny.com/contents/videos_screenshots/608000/608532/800x450/1.jpg" class="channel-profile-avatar">
+        <div class="channel-meta">
+          <h1>Aishah Sofey <span class="blue-tick">✓</span></h1>
+          <p>Resmi Aishah Sofey içerik kanalı.</p>
+        </div>
+      </div>
+    </div>
+    <div class="section-title">Kanalın Videoları</div>
+    <div class="video-card" onclick="openVideo('Aishah Sofey Seksi Fiziğiyle Göz Kamaştırıyor', 'https://voe.sx/e/jfpwsptrfcor', '📅 7 Kasım 2026', 'Aishah Sofey', 'https://pimpbunny.com/contents/videos_screenshots/608000/608532/800x450/1.jpg')">
+      <div class="thumbnail-box">
+        <img src="https://pimpbunny.com/contents/videos_screenshots/608000/608532/800x450/1.jpg" alt="Kapak">
+      </div>
+      <div class="video-details">
+        <div class="video-info-left">
+          <div class="video-title">Aishah Sofey Seksi Fiziğiyle Göz Kamaştırıyor</div>
+          <div class="video-date">📅 7 Kasım 2026</div>
+          <div class="channel-row">
+            <img src="https://pimpbunny.com/contents/videos_screenshots/608000/608532/800x450/1.jpg" alt="Avatar" class="channel-avatar">
+            <div class="channel-name-area">Aishah Sofey <span class="blue-tick">✓</span></div>
+          </div>
+        </div>
+        <span class="action-btn">İzle 🚀</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sweetie Fox Kanal Sayfası -->
+  <div class="container page-view" id="channelSweetieView">
+    <div class="channel-profile-header">
+      <img src="https://t3.pixhost.to/thumbs/6399/783546656_162830.jpg" class="channel-banner-img">
+      <div class="channel-profile-info">
+        <img src="https://t3.pixhost.to/thumbs/6399/783546656_162830.jpg" class="channel-profile-avatar">
+        <div class="channel-meta">
+          <h1>Sweetie Fox <span class="blue-tick">✓</span></h1>
+          <p>Resmi Sweetie Fox içerik kanalı.</p>
+        </div>
+      </div>
+    </div>
+    <div class="section-title">Kanalın Videoları</div>
+    <div class="video-card" onclick="openVideo('Tüylü Vajinalı Köylü Kızı Bir Yabancı Tarafından Sikişildi - Sweetie Fox', 'https://voe.sx/e/hoshht3fdzl0', '📅 7 Kasım 2026', 'Sweetie Fox', 'https://t3.pixhost.to/thumbs/6399/783546656_162830.jpg')">
+      <div class="thumbnail-box">
+        <img src="https://t3.pixhost.to/thumbs/6399/783546656_162830.jpg" alt="Kapak">
+      </div>
+      <div class="video-details">
+        <div class="video-info-left">
+          <div class="video-title">Tüylü Vajinalı Köylü Kızı Bir Yabancı Tarafından Sikişildi - Sweetie Fox</div>
+          <div class="video-date">📅 7 Kasım 2026</div>
+          <div class="channel-row">
+            <img src="https://t3.pixhost.to/thumbs/6399/783546656_162830.jpg" alt="Avatar" class="channel-avatar">
+            <div class="channel-name-area">Sweetie Fox <span class="blue-tick">✓</span></div>
+          </div>
+        </div>
+        <span class="action-btn">İzle 🚀</span>
+      </div>
     </div>
   </div>
 
@@ -530,152 +631,4 @@
   <!-- Comatozze Kanal Sayfası -->
   <div class="container page-view" id="channelComatozzeView">
     <div class="channel-profile-header">
-      <img src="https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)(mh=n7tIeIoHniVFwhIe)200x200.jpg" class="channel-banner-img">
-      <div class="channel-profile-info">
-        <img src="https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)(mh=n7tIeIoHniVFwhIe)200x200.jpg" class="channel-profile-avatar">
-        <div class="channel-meta">
-          <h1>Comatozze <span class="blue-tick">✓</span></h1>
-          <p>Özel hikaye ve dram odaklı içerik kanalı.</p>
-        </div>
-      </div>
-    </div>
-    <div class="section-title">Kanalın Videoları</div>
-    <div class="video-card" onclick="openVideo('Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.', 'https://voe.sx/e/gbjcwhsp3z1a', '📅 6 Kasım 2026', 'Comatozze', 'https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)(mh=n7tIeIoHniVFwhIe)200x200.jpg')">
-      <div class="thumbnail-box">
-        <img src="https://pix-cdn77.phncdn.com/c6541/videos/202610/25/66946915/original/01a17308-77b0-74a0-972b-6742480fa576.jpg/plain/rs:fit:480:270?hash=9TLrW3HOH5pSmPwysoWhrRRqg3U=&validto=1794061651" alt="Kapak">
-      </div>
-      <div class="video-details">
-        <div class="video-info-left">
-          <div class="video-title">Üvey Kız kardeşim Yalnız Kalmaktan Korkuyordu, Bu Yüzden Bana Geldi.</div>
-          <div class="video-date">📅 6 Kasım 2026</div>
-          <div class="channel-row">
-            <img src="https://ei.phncdn.com/pics/users/0024/5807/0141/avatar95302765/(m=ewILGCjadOf)(mh=n7tIeIoHniVFwhIe)200x200.jpg" alt="Avatar" class="channel-avatar">
-            <div class="channel-name-area">Comatozze <span class="blue-tick">✓</span></div>
-          </div>
-        </div>
-        <span class="action-btn">İzle 🚀</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Video İzleme Sayfası -->
-  <div class="container page-view" id="videoView">
-    <div class="player-wrapper">
-      <!-- Reklam Katmanı -->
-      <div class="ad-overlay" id="adOverlay">
-        <video id="adVideo" src="reklam.mp4" playsinline></video>
-        <button class="ad-fullscreen-btn" type="button" onclick="toggleAdFullscreen()">⛶ Tam Ekran</button>
-        <button class="skip-ad-btn disabled" id="skipAdBtn" type="button">Reklamı Geç (5)</button>
-      </div>
-
-      <!-- Asıl Video -->
-      <iframe id="videoIframe" src="" allowfullscreen style="width:100%; height:100%; border:0;"></iframe>
-    </div>
-
-    <div class="video-title" id="playingVideoTitle" style="font-size: 18px;"></div>
-    <div class="video-date" id="playingVideoDate"></div>
-    <div class="channel-row" id="playingChannelRow" style="border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-bottom: 20px;">
-      <img id="playingChannelAvatar" src="" class="channel-avatar">
-      <div class="channel-name-area"><span id="playingChannelName"></span> <span class="blue-tick">✓</span></div>
-    </div>
-  </div>
-
-  <script>
-    function toggleMenu() {
-      const sidebar = document.getElementById('sidebar');
-      const overlay = document.getElementById('overlay');
-      sidebar.classList.toggle('active');
-      overlay.classList.toggle('active');
-    }
-
-    function closeMenu() {
-      const sidebar = document.getElementById('sidebar');
-      const overlay = document.getElementById('overlay');
-      sidebar.classList.remove('active');
-      overlay.classList.remove('active');
-    }
-
-    function toggleTheme() {
-      const body = document.body;
-      if (body.getAttribute('data-theme') === 'dark') {
-        body.setAttribute('data-theme', 'light');
-      } else {
-        body.setAttribute('data-theme', 'dark');
-      }
-    }
-
-    function filterVideos() {
-      let input = document.getElementById('searchInput').value.toLowerCase();
-      let cards = document.querySelectorAll('#homeView .video-card');
-
-      showHome(); 
-
-      cards.forEach(card => {
-        let title = card.querySelector('.video-title').innerText.toLowerCase();
-        let channel = card.querySelector('.channel-name-area').innerText.toLowerCase();
-        let category = card.getAttribute('data-category').toLowerCase();
-
-        if (title.includes(input) || channel.includes(input) || category.includes(input)) {
-          card.style.display = "";
-        } else {
-          card.style.display = "none";
-        }
-      });
-    }
-
-    function filterByCategory(catName) {
-      let cards = document.querySelectorAll('#homeView .video-card');
-      showHome();
-      closeMenu();
-
-      cards.forEach(card => {
-        let category = card.getAttribute('data-category');
-        if (category === catName) {
-          card.style.display = "";
-        } else {
-          card.style.display = "none";
-        }
-      });
-    }
-
-    function hideAllViews() {
-      document.querySelectorAll('.page-view').forEach(view => {
-        view.classList.remove('active');
-      });
-    }
-
-    function showHome() {
-      hideAllViews();
-      document.getElementById('homeView').classList.add('active');
-      document.getElementById('videoIframe').src = '';
-      closeMenu();
-    }
-
-    function showChannelSophie() {
-      hideAllViews();
-      document.getElementById('channelSophieView').classList.add('active');
-      document.getElementById('videoIframe').src = '';
-      closeMenu();
-      window.scrollTo(0, 0);
-    }
-
-    function showChannelComatozze() {
-      hideAllViews();
-      document.getElementById('channelComatozzeView').classList.add('active');
-      document.getElementById('videoIframe').src = '';
-      closeMenu();
-      window.scrollTo(0, 0);
-    }
-
-    function toggleAdFullscreen() {
-      const adVideo = document.getElementById('adVideo');
-      if (adVideo.requestFullscreen) {
-        adVideo.requestFullscreen();
-      } else if (adVideo.webkitRequestFullscreen) {
-        adVideo.webkitRequestFullscreen();
-      }
-    }
-
-    let countdownInterval;
-
-    function o
+      <img src="https://ei.phncdn.com
