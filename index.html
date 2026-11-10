@@ -1,1 +1,635 @@
-llkk
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WQEMAN🙈</title>
+  <style>
+    :root {
+      --bg-color: #121212;
+      --text-color: #ffffff;
+      --header-bg: #000000;
+      --card-bg: #1a1a1a;
+      --border-color: #282828;
+      --btn-bg: #ff6600;
+      --btn-text: #ffffff;
+      --sidebar-bg: #1f1f1f;
+      --sidebar-text: #ffffff;
+      --sidebar-hover: #333333;
+    }
+
+    [data-theme="light"] {
+      --bg-color: #f4f4f4;
+      --text-color: #111111;
+      --header-bg: #ffffff;
+      --card-bg: #ffffff;
+      --border-color: #dddddd;
+      --btn-bg: #ff3399;
+      --btn-text: #ffffff;
+      --sidebar-bg: #ffffff;
+      --sidebar-text: #000000;
+      --sidebar-hover: #eeeeee;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+    }
+
+    header {
+      background-color: var(--header-bg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-color);
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .header-left, .header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .search-container {
+      flex: 1;
+      max-width: 350px;
+      display: flex;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 8px 12px;
+      border-radius: 20px 0 0 20px;
+      border: 1px solid var(--border-color);
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      outline: none;
+      font-size: 14px;
+    }
+
+    .search-btn {
+      padding: 8px 16px;
+      border-radius: 0 20px 20px 0;
+      border: 1px solid var(--border-color);
+      border-left: none;
+      background-color: var(--btn-bg);
+      color: var(--btn-text);
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .menu-btn, .icon-btn {
+      background: none;
+      border: none;
+      color: var(--text-color);
+      font-size: 22px;
+      cursor: pointer;
+      padding: 6px;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--text-color);
+      cursor: pointer;
+    }
+
+    .dropdown-menu {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 280px;
+      height: 100%;
+      background-color: var(--sidebar-bg);
+      color: var(--sidebar-text);
+      z-index: 9999;
+      transition: left 0.3s ease;
+      overflow-y: auto;
+      border-right: 1px solid var(--border-color);
+    }
+
+    .dropdown-menu.active {
+      left: 0;
+    }
+
+    .menu-header {
+      background-color: #000;
+      color: #fff;
+      padding: 20px 16px;
+      text-align: center;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .menu-header h2 {
+      font-size: 18px;
+      margin-bottom: 5px;
+      color: var(--btn-bg);
+    }
+
+    .menu-header p {
+      font-size: 12px;
+      color: #aaa;
+    }
+
+    .menu-list {
+      list-style: none;
+      padding: 10px 0;
+    }
+
+    .menu-list li a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 20px;
+      color: var(--sidebar-text);
+      text-decoration: none;
+      font-size: 15px;
+      border-bottom: 1px solid var(--border-color);
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .menu-list li a:hover {
+      background-color: var(--sidebar-hover);
+      color: var(--btn-bg);
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 5000;
+      display: none;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 12px;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      color: #aaa;
+    }
+
+    .channel-profile-header {
+      background: linear-gradient(135deg, #222, #111);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      border: 1px solid var(--border-color);
+    }
+
+    .channel-banner-img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      background-color: #333;
+    }
+
+    .channel-profile-info {
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .channel-profile-avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: 3px solid var(--bg-color);
+      margin-top: -45px;
+      background-color: #ff6600;
+      object-fit: cover;
+    }
+
+    .channel-meta h1 {
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-color);
+    }
+
+    .channel-meta p {
+      font-size: 12px;
+      color: #aaa;
+      margin-top: 4px;
+    }
+
+    .video-card {
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+    }
+
+    .thumbnail-box {
+      width: 100%;
+      height: 160px; /* Daha şık ve kompakt yükseklik */
+      background-color: #000;
+      position: relative;
+      overflow: hidden;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    .thumbnail-box img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover; /* Görselin bozulmadan kutuya tam oturmasını sağlar */
+    }
+
+    .video-details {
+      padding: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    .video-info-left {
+      flex: 1;
+    }
+
+    .video-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: var(--text-color);
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    .video-date {
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 10px;
+    }
+
+    .channel-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .channel-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .channel-name-area {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--text-color);
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .blue-tick {
+      background-color: #1da1f2;
+      color: #fff;
+      border-radius: 50%;
+      width: 14px;
+      height: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+    }
+
+    .action-btn {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: var(--btn-bg);
+      color: var(--btn-text);
+      text-align: center;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .player-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      background: #000;
+      border-radius: 10px;
+      margin-bottom: 14px;
+    }
+
+    .player-wrapper iframe, .player-wrapper video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .ad-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      z-index: 10;
+    }
+
+    .ad-overlay.hidden {
+      display: none;
+    }
+
+    .ad-fullscreen-btn {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      border: 1px solid #555;
+      padding: 8px 14px;
+      font-size: 13px;
+      border-radius: 4px;
+      cursor: pointer;
+      z-index: 15;
+    }
+
+    .skip-ad-btn {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.85);
+      color: #fff;
+      border: 1px solid var(--btn-bg);
+      padding: 10px 18px;
+      font-size: 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      z-index: 15;
+      font-weight: bold;
+    }
+
+    .skip-ad-btn.disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+      border-color: #555;
+      pointer-events: none;
+    }
+
+    .page-view {
+      display: none;
+    }
+
+    .page-view.active {
+      display: block;
+    }
+  </style>
+</head>
+<body data-theme="dark">
+
+  <header>
+    <div class="header-left">
+      <button class="menu-btn" type="button" onclick="toggleMenu()">☰</button>
+      <span class="logo" onclick="showHome()">WQEMAN🙈</span>
+    </div>
+
+    <!-- Arama Motoru -->
+    <div class="search-container">
+      <input type="text" id="searchInput" class="search-input" placeholder="Video veya kategori ara..." onkeyup="filterVideos()">
+      <button class="search-btn" type="button" onclick="filterVideos()">🔍</button>
+    </div>
+
+    <div class="header-right">
+      <button class="icon-btn" id="themeToggle" title="Tema Değiştir" type="button" onclick="toggleTheme()">🌓</button>
+    </div>
+  </header>
+
+  <!-- Sol Menü (Sadece Sophie Rain) -->
+  <div class="dropdown-menu" id="sidebar">
+    <div class="menu-header">
+      <h2>Menü</h2>
+      <p>WQEMAN.com</p>
+    </div>
+    <ul class="menu-list">
+      <li><a onclick="showHome(); closeMenu();">🏠 Başlangıç Sayfası</a></li>
+      <li><a onclick="showChannelSophie(); closeMenu();">✨ Sophie Rain Kanalı</a></li>
+      <li><a onclick="filterByCategory('Özel');">💡 Kategori: Özel Gösteriler</a></li>
+    </ul>
+  </div>
+
+  <div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+  <!-- Ana Sayfa -->
+  <div class="container page-view active" id="homeView">
+    <div class="section-title">ÖNE ÇIKAN VİDEOLAR</div>
+    <div id="videoList">
+      
+      <!-- Sophie Rain Salon İç Giyim -->
+      <div class="video-card" data-category="Özel" onclick="openVideo('Sophie Rain Salon İç Giyim Striptiz Videosu', 'https://voe.sx/e/0tfv5k7tsymo', '📅 7 Kasım 2026', 'Sophieraiin', 'https://leakgrl.com/storage/thumbs/8hmOTzDwhAuyAkq5KrP5DSh1-640w.jpg')">
+        <div class="thumbnail-box">
+          <img src="https://leakgrl.com/storage/thumbs/8hmOTzDwhAuyAkq5KrP5DSh1-640w.jpg" alt="Sophie Salon Kapak">
+        </div>
+        <div class="video-details">
+          <div class="video-info-left">
+            <div class="video-title">Sophie Rain Salon İç Giyim Striptiz Videosu</div>
+            <div class="video-date">📅 7 Kasım 2026 | Kategori: Özel</div>
+            <div class="channel-row" onclick="event.stopPropagation(); showChannelSophie();">
+              <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Avatar" class="channel-avatar">
+              <div class="channel-name-area">Sophieraiin <span class="blue-tick">✓</span></div>
+            </div>
+          </div>
+          <span class="action-btn">İzle 🚀</span>
+        </div>
+      </div>
+
+      <!-- Sophie Rain Siyah Kıyafetli Striptiz -->
+      <div class="video-card" data-category="Özel" onclick="openVideo('Sophie Rain Siyah Kıyafetli Striptiz OnlyFans Videosu', 'https://voe.sx/e/rxyaxeuzhtwj', '📅 7 Kasım 2026', 'Sophieraiin', 'https://leakgrl.com/storage/thumbs/khjVjurxFb0iDN0hTnlfGQg1-640w.jpg')">
+        <div class="thumbnail-box">
+          <img src="https://leakgrl.com/storage/thumbs/khjVjurxFb0iDN0hTnlfGQg1-640w.jpg" alt="Sophie Siyah Kıyafet Kapak">
+        </div>
+        <div class="video-details">
+          <div class="video-info-left">
+            <div class="video-title">Sophie Rain Siyah Kıyafetli Striptiz OnlyFans Videosu</div>
+            <div class="video-date">📅 7 Kasım 2026 | Kategori: Özel</div>
+            <div class="channel-row" onclick="event.stopPropagation(); showChannelSophie();">
+              <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Avatar" class="channel-avatar">
+              <div class="channel-name-area">Sophieraiin <span class="blue-tick">✓</span></div>
+            </div>
+          </div>
+          <span class="action-btn">İzle 🚀</span>
+        </div>
+      </div>
+
+      <!-- Sophie Rain Aynanın Karşısında -->
+      <div class="video-card" data-category="Özel" onclick="openVideo('Sophie Rain Aynanın Karşısında Özel Bölgesini Okşarken Video Çekiyor', 'https://voe.sx/e/fnj3rutjddcv', '📅 7 Kasım 2026', 'Sophieraiin', 'https://leakgrl.com/storage/thumbs/0dckVbflSgtS6UjGdBDh9IbP-640w.jpg')">
+        <div class="thumbnail-box">
+          <img src="https://leakgrl.com/storage/thumbs/0dckVbflSgtS6UjGdBDh9IbP-640w.jpg" alt="Sophie Ayna Kapak">
+        </div>
+        <div class="video-details">
+          <div class="video-info-left">
+            <div class="video-title">Sophie Rain Aynanın Karşısında Özel Bölgesini Okşarken Video Çekiyor</div>
+            <div class="video-date">📅 7 Kasım 2026 | Kategori: Özel</div>
+            <div class="channel-row" onclick="event.stopPropagation(); showChannelSophie();">
+              <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Avatar" class="channel-avatar">
+              <div class="channel-name-area">Sophieraiin <span class="blue-tick">✓</span></div>
+            </div>
+          </div>
+          <span class="action-btn">İzle 🚀</span>
+        </div>
+      </div>
+
+      <!-- Sophie Rain Seksi Siyah Renk -->
+      <div class="video-card" data-category="Özel" onclick="openVideo('Sophie Rain Seksi Siyah Renk Kıyafetiyle Soyunuyor', 'https://voe.sx/e/g3beul38mpw7', '📅 7 Kasım 2026', 'Sophieraiin', 'https://i.postimg.cc/pTMp10rZ/2-(1).jpg')">
+        <div class="thumbnail-box">
+          <img src="https://i.postimg.cc/pTMp10rZ/2-(1).jpg" alt="Sophie Kapak">
+        </div>
+        <div class="video-details">
+          <div class="video-info-left">
+            <div class="video-title">Sophie Rain Seksi Siyah Renk Kıyafetiyle Soyunuyor</div>
+            <div class="video-date">📅 7 Kasım 2026 | Kategori: Özel</div>
+            <div class="channel-row" onclick="event.stopPropagation(); showChannelSophie();">
+              <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Avatar" class="channel-avatar">
+              <div class="channel-name-area">Sophieraiin <span class="blue-tick">✓</span></div>
+            </div>
+          </div>
+          <span class="action-btn">İzle 🚀</span>
+        </div>
+      </div>
+
+      <!-- Sophie Rain Krem Şanti -->
+      <div class="video-card" data-category="Özel" onclick="openVideo('Sophie Rain Krem Şanti İle Şov Yapıyor', 'https://voe.sx/e/vdkex5vzitjh', '📅 5 Kasım 2026', 'Sophieraiin', 'https://pimpbunny.com/contents/videos_screenshots/608000/608532/800x450/1.jpg')">
+        <div class="thumbnail-box">
+          <img src="https://pimpbunny.com/contents/videos_screenshots/608000/608532/800x450/1.jpg" alt="Sophie Kapak">
+        </div>
+        <div class="video-details">
+          <div class="video-info-left">
+            <div class="video-title">Sophie Rain Krem Şanti İle Şov Yapıyor</div>
+            <div class="video-date">📅 5 Kasım 2026 | Kategori: Özel</div>
+            <div class="channel-row" onclick="event.stopPropagation(); showChannelSophie();">
+              <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Avatar" class="channel-avatar">
+              <div class="channel-name-area">Sophieraiin <span class="blue-tick">✓</span></div>
+            </div>
+          </div>
+          <span class="action-btn">İzle 🚀</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Sophie Rain Kanal Sayfası -->
+  <div class="container page-view" id="channelSophieView">
+    <div class="channel-profile-header">
+      <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" class="channel-banner-img" alt="Banner">
+      <div class="channel-profile-info">
+        <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" class="channel-profile-avatar" alt="Avatar">
+        <div class="channel-meta">
+          <h1>Sophieraiin <span class="blue-tick">✓</span></h1>
+          <p>Resmi içerik kanalı. Özel performanslar ve gösteriler.</p>
+        </div>
+      </div>
+    </div>
+    <div class="section-title">Kanalın Videoları</div>
+    
+    <div class="video-card" onclick="openVideo('Sophie Rain Salon İç Giyim Striptiz Videosu', 'https://voe.sx/e/0tfv5k7tsymo', '📅 7 Kasım 2026', 'Sophieraiin', 'https://leakgrl.com/storage/thumbs/8hmOTzDwhAuyAkq5KrP5DSh1-640w.jpg')">
+      <div class="thumbnail-box">
+        <img src="https://leakgrl.com/storage/thumbs/8hmOTzDwhAuyAkq5KrP5DSh1-640w.jpg" alt="Kapak">
+      </div>
+      <div class="video-details">
+        <div class="video-info-left">
+          <div class="video-title">Sophie Rain Salon İç Giyim Striptiz Videosu</div>
+          <div class="video-date">📅 7 Kasım 2026</div>
+          <div class="channel-row">
+            <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Avatar" class="channel-avatar">
+            <div class="channel-name-area">Sophieraiin <span class="blue-tick">✓</span></div>
+          </div>
+        </div>
+        <span class="action-btn">İzle 🚀</span>
+      </div>
+    </div>
+
+    <div class="video-card" onclick="openVideo('Sophie Rain Siyah Kıyafetli Striptiz OnlyFans Videosu', 'https://voe.sx/e/rxyaxeuzhtwj', '📅 7 Kasım 2026', 'Sophieraiin', 'https://leakgrl.com/storage/thumbs/khjVjurxFb0iDN0hTnlfGQg1-640w.jpg')">
+      <div class="thumbnail-box">
+        <img src="https://leakgrl.com/storage/thumbs/khjVjurxFb0iDN0hTnlfGQg1-640w.jpg" alt="Kapak">
+      </div>
+      <div class="video-details">
+        <div class="video-info-left">
+          <div class="video-title">Sophie Rain Siyah Kıyafetli Striptiz OnlyFans Videosu</div>
+          <div class="video-date">📅 7 Kasım 2026</div>
+          <div class="channel-row">
+            <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Avatar" class="channel-avatar">
+            <div class="channel-name-area">Sophieraiin <span class="blue-tick">✓</span></div>
+          </div>
+        </div>
+        <span class="action-btn">İzle 🚀</span>
+      </div>
+    </div>
+
+    <div class="video-card" onclick="openVideo('Sophie Rain Aynanın Karşısında Özel Bölgesini Okşarken Video Çekiyor', 'https://voe.sx/e/fnj3rutjddcv', '📅 7 Kasım 2026', 'Sophieraiin', 'https://leakgrl.com/storage/thumbs/0dckVbflSgtS6UjGdBDh9IbP-640w.jpg')">
+      <div class="thumbnail-box">
+        <img src="https://leakgrl.com/storage/thumbs/0dckVbflSgtS6UjGdBDh9IbP-640w.jpg" alt="Kapak">
+      </div>
+      <div class="video-details">
+        <div class="video-info-left">
+          <div class="video-title">Sophie Rain Aynanın Karşısında Özel Bölgesini Okşarken Video Çekiyor</div>
+          <div class="video-date">📅 7 Kasım 2026</div>
+          <div class="channel-row">
+            <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Avatar" class="channel-avatar">
+            <div class="channel-name-area">Sophieraiin <span class="blue-tick">✓</span></div>
+          </div>
+        </div>
+        <span class="action-btn">İzle 🚀</span>
+      </div>
+    </div>
+
+    <div class="video-card" onclick="openVideo('Sophie Rain Seksi Siyah Renk Kıyafetiyle Soyunuyor', 'https://voe.sx/e/g3beul38mpw7', '📅 7 Kasım 2026', 'Sophieraiin', 'https://i.postimg.cc/pTMp10rZ/2-(1).jpg')">
+      <div class="thumbnail-box">
+        <img src="https://i.postimg.cc/pTMp10rZ/2-(1).jpg" alt="Kapak">
+      </div>
+      <div class="video-details">
+        <div class="video-info-left">
+          <div class="video-title">Sophie Rain Seksi Siyah Renk Kıyafetiyle Soyunuyor</div>
+          <div class="video-date">📅 7 Kasım 2026</div>
+          <div class="channel-row">
+            <img src="https://i.postimg.cc/tThQ2knS/1WK8y-B-C.jpg" alt="Avatar" class="channel-avatar">
+            <div class="channel-name-area">Sophieraiin <span class="blue-tick">✓</span></div>
+          </div>
+        </div>
+        <span class="action-btn">İzle 🚀</span>
+      <
